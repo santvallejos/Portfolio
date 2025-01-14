@@ -10,6 +10,13 @@ interface Props {
 const { Estudio, Institucion, fecha, link, skils} = Astro.props;
 
 import Badge from './Badge.astro';
+
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslations } from "../i18n/utils";
+import { languageList } from "../i18n/ui";
+const currentLang = Astro.currentLocale || 'es';
+
+const translateLabels = useTranslations (currentLang as keyof typeof languageList);
 ---
 
 <li class="xl:w-96 md:w-1/2 p-2">
@@ -18,6 +25,6 @@ import Badge from './Badge.astro';
       <p class="text-sky-500/90">{Institucion}</p>
       <p class="mb-2">{fecha}</p>
       <p>{skils}</p>
-      <a href={link} target="_blank" class="leading-relaxed text-base"><Badge>Certificado</Badge></a>
+      <a href={link} target="_blank" class="leading-relaxed text-base"><Badge>{translateLabels('studies.certificate')}</Badge></a>
     </div>
 </li>

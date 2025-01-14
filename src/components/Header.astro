@@ -1,53 +1,74 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslations } from "../i18n/utils";
+import { languageList } from "../i18n/ui";
+
+const currentLang = Astro.currentLocale || 'es';
+
+const translateLabels = useTranslations(currentLang as keyof typeof languageList);
+
+// Función para obtener la URL relativa sin la barra final
+const getCleanRelativeLocaleUrl = (locale, path) => {
+  const url = getRelativeLocaleUrl(locale, path);
+  return url.endsWith('/') ? url.slice(0, -1) : url; // Elimina la barra final si existe
+};
+
 const navItems = [
     {
-        title: 'Inicio',
-        url: '/#top'
+        title: translateLabels("nav.start"),
+        url: getCleanRelativeLocaleUrl(currentLang, '/#top')
     },
     {
-        title: 'Sobre mí',
-        url: '/#sobre-mi'
+        title: translateLabels("nav.about"),
+        url: getRelativeLocaleUrl(currentLang, '/#sobre-mi')
     },
     {
-        title: 'Proyectos',
-        url: '/#proyectos'
+        title: translateLabels("nav.projects"),
+        url: getRelativeLocaleUrl(currentLang, '/#proyectos')
     },
     {
-        title: 'Contacto',
-        url: '/#contacto'
-    },
-    ]
-    ---
-
-    <header
+        title: translateLabels("nav.contact"),
+        url: getRelativeLocaleUrl(currentLang, '/#contacto')
+    }
+];
+---
+<header
+  class={`
+    flex justify-center items-center
+    mx-auto
+    py-5
+    sticky top-0
+    w-full xl:w-[1120px]
+    z-10
+  `}
+>
+  <nav
     class={`
-        flex justify-center items-center
-        mx-auto
-        py-5
-        sticky top-0
-        w-full xl:w-[1120px]
-        z-10
+      border border-black rounded-full
+      px-3 py-1
+      flex flex-row items-center lg:gap-12
+      bg-black/50
+      backdrop-blur-2xl
     `}
-    >
-    <nav
-        class={`
-        border border-black rounded-full
-        px-3 py-1
-        flex flex-row items-center lg:gap-12
-        bg-black/50
-        backdrop-blur-2xl
-        `}
-    >
+  >
     {navItems.map(link => (
-        <a
+      <a
         class="text-white hover:bg-white/10 rounded-full px-2 sm:px-3 transition text-sm sm:text-base"
-        href={link.url}>{link.title}</a
-        >
+        href={link.url}
+      >
+        {link.title}
+      </a>
     ))}
-    </nav>
-    </header>
-    
-    <script>
+    <a
+      class="text-white hover:bg-white/10 rounded-full px-2 sm:px-3 transition text-sm sm:text-base"
+      href={getRelativeLocaleUrl(currentLang === 'es' ? 'en' : 'es')}
+    >
+      {currentLang === 'es' ? 'English' : 'Spanish'}
+    </a>
+  </nav>
+</header>
+
+<script>
 const $navAElements = [...document.querySelectorAll('header nav a')];
 
 window.addEventListener('scroll', () => {

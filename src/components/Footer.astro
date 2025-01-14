@@ -1,7 +1,15 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslations } from "../i18n/utils";
+import { languageList } from "../i18n/ui";
+const currentLang = Astro.currentLocale || 'es';
+
+const translateLabels = useTranslations (currentLang as keyof typeof languageList);
+---
 <footer style=" background-color: #050505;" class="shadow m-4 bg-gray-800 rounded-lg">
     <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
         <span class="text-sm text-gray-400 sm:text-center">© 2024 <a href="https://www.linkedin.com/in/santiago-vallejos-97a933236/" target="_blank" class="hover:underline">Santiago Vallejos</a>.
         </span>
-        <span class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-400 sm:mt-0">Portfolio creado con Astro y Tailwind</span>
+        <span class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-400 sm:mt-0">{translateLabels("footer.text")}</span>
     </div>
 </footer>

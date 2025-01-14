@@ -23,6 +23,13 @@ import BootstrapIcon from "./icons/BootstrapIcon.astro";
 import LinkButton from "./LinkButton.astro";
 import TrelloIcon from "./icons/TrelloIcon.astro";
 
+import type { languageList } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+const currentLang = Astro.currentLocale || 'es';
+
+const translateLabels = useTranslations (currentLang as keyof typeof languageList);
+
 
 const TAGS = {
 
@@ -120,34 +127,33 @@ const TAGS = {
 const PROJECTS = [
   {
     title: "Calendar Of Events",
-    description: "Permite administrar eventos o recordatorios dentro de un calendario, tiene la función de mostrar, crear, actualizar y eliminar eventos de forma sencilla que a su vez a través de SignalR nos avisa cuando un evento ha iniciado.",
+    description: translateLabels("projects.CalendarOfEvents"),
     githubBackend: "https://github.com/santvallejos/CalendarOfEvents-Backend/tree/develop",
     githubFrontend: "https://github.com/santvallejos/CalendarOfEvents-Frontend/tree/develop",
-    video: './projects/CalendarOfEvents.mp4',
+    video: '../projects/CalendarOfEvents.mp4',
     trello: "https://trello.com/b/CxGys3Ed/calendarofevents",
     tags: [TAGS.DOTNET, TAGS.ANGULAR, TAGS.SQLSERVER, TAGS.BOOTSTRAP, TAGS.CSS],
   },
   {
     title: "QuickMart",
-    description: "E-commerse de un supermercado que permite crear un usuario, registrarse, obtener una lista de productos para agregar al carrito y en el mismo administrar la cantidad, eliminar o realizar la compra.",
+    description: translateLabels("projects.QuickMart"),
     github: "https://github.com/santvallejos/SupermercadoLaravel",
-    image: "./projects/QuickMart.jpg",
+    image: "../projects/QuickMart.jpg",
     tags: [TAGS.LARAVEL, TAGS.VUEJS, TAGS.CSS, TAGS.MYSQL],
   },
   {
     title: "VirtualTome",
-    description:
-      "Este proyecto es una biblioteca virtual donde puedes administrar una lista de libros, estos poseen: nombre, autor, categoría, url de imagen, fecha de publicación y su isbn. Cumple las funciones básicas de un CRUD que son: listar, añadir, actualizar y eliminar un libro.",
+    description: translateLabels("projects.VirtualTome"),
     githubBackend: "https://github.com/santvallejos/VirtualTome-Backend",
     githubFrontend: "https://github.com/santvallejos/VirtualTome-Frontend",
-    video: './projects/VirtualTome 1.0.mp4',
+    video: '../projects/VirtualTome 1.0.mp4',
     tags: [TAGS.NODEJS, TAGS.REACTJS, TAGS.MYSQL, TAGS.POSTMAN],
   },
   {
     title: "To-Dolist",
-    description: "Un gestor de tareas, donde se puede agregar, marcar cuando están finalizadas y eliminarlas.",
+    description: translateLabels("projects.To-Dolist"),
     github: "https://github.com/santvallejos/To-doList",
-    image: "./projects/To-DolistShots.png",
+    image: "../projects/To-DolistShots.png",
     tags: [TAGS.ANGULAR],
   }
 ]
@@ -188,25 +194,25 @@ const PROJECTS = [
           {github && (
             <LinkButton href={github}>
               <GitHub class="size-6" />
-              Ver código fuente
+              {translateLabels('projects.fountain')}
             </LinkButton>
           )}
           {githubBackend &&(
               <LinkButton href={githubBackend}>
               <GitHub class="size-6" />
-              Ver código Backend
+              {translateLabels('projects.backend')}
             </LinkButton>
           )}
           {githubFrontend &&(
               <LinkButton href={githubFrontend}>
               <GitHub class="size-6" />
-              Ver código Frontend
+              {translateLabels('projects.frontend')}
             </LinkButton>
           )}
 {/*           {link && (
             <LinkButton href={link}>
               <Browser class="size-6"/>
-            Ir al sitio web
+            {translateLabels('projects.web')}
           </LinkButton>
           )} */}
         </div> 
@@ -214,7 +220,7 @@ const PROJECTS = [
           {trello && (
             <LinkButton href={trello}>
               <TrelloIcon class="size-6"/>
-            Ir al sitio web
+              {translateLabels('projects.trello')}
           </LinkButton>
           )}
         </div>

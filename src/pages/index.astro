@@ -19,68 +19,50 @@ import AboutMe from "../components/AboutMe.astro";
 ---
 
 <Layout
-  title="Portfolio de Satiago Vallejos - Desarrollador y Programador Web"
-  description="Contrata a Santiago Vallejos para la creacion de tus apliaciones web. Programador Full Stack. Me epecializo en crear aplicaciones únicas."
+  title="Portfolio de Satiago Vallejos - Full Stack Developer"
+  description="Contrata a Santiago Vallejos para la creacion de tus proyectos. Programador Full Stack. Me epecializo en crear aplicaciones únicas."
 >
-  <!-- Presentacion del usuario -->
-  <SectionContainer id="contacto" class="py-44 pb-24">
-    <main class="px-3">
-      <img
-        class="rounded-full size-20"
-        src="../SantiagoPhotoColor.png"
-        alt="Santiago photo"
-      />
-
-      <h1
-        class="text-dark text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10 dark:text-white"
-      >
-        Hey, soy Santiago <a
-          href="https://www.linkedin.com/in/santiago-vallejos-97a933236/"
-          class="flex justify-center items-center"
-          ><BadgeAnimation>Disponible para trabajar</BadgeAnimation></a
-        >
+  <!-- Presentacion -->
+  <SectionContainer id="contacto" class="py-44 pb-24 flex flex-col lg:flex-row items-center lg:items-start gap-8 p-2">
+    <!-- Columna Izquierda -->
+    <div class="flex flex-col gap-6 w-full lg:w-1/2 text-left">
+      <h1 class="text-dark text-3xl text-center lg:text-start md:text-4xl lg:text-5xl font-bold dark:text-white">
+        Hola, soy Santiago
       </h1>
-
-      <h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">
-        Soy <span class="text-yellow-500/90">Programador Full Stack</span>. <span
-          class="text-sky-500/90">De Corrientes, Argentina🧉</span
-        >. <br />
-        <span class="opacity-75">
-          Me especializo en crear aplicaciones únicas.</span
-        >
+      <h2 class="text-xl text-center lg:text-start lg:text-2xl text-wrap max-w-[700px]">
+        Soy <span class="text-yellow-500/90">Programador Full Stack</span>, de 
+        <span class="text-sky-500/90">Corrientes, Argentina 🧉</span>.
       </h2>
-
-      <!-- Contactos -->
-      <nav class="flex gap-4 mt-8 flex-wrap">
-        <LinkButton
-          href="https://www.linkedin.com/in/santiago-vallejos-97a933236/"
-        >
-          <LinkedinIcon class="size-4 md:size-6" />
-          LinkedIn
+      <nav class="grid grid-cols-2 gap-4 ">
+        <LinkButton href="https://www.linkedin.com/in/santiago-vallejos-97a933236/">
+          <LinkedinIcon class="size-5 md:size-6" /> LinkedIn
         </LinkButton>
-
         <LinkButton href="https://github.com/santvallejos">
-          <GithubIcon class="size-4 md:size-6" />
-          Github
+          <GithubIcon class="size-5 md:size-6" /> GitHub
         </LinkButton>
-
         <LinkButton href="mailto:vallejossantiago1412@gmail.com">
-          <MailIcon class="size-4 md:size-6" />
-          vallejossantiago1412@gmail.com
+          <MailIcon class="size-5 md:size-6" /> Mail
+        </LinkButton>
+        <LinkButton href="/SantiagoVallejosCV.pdf" download="SantiagoVallejosCV.pdf">
+          <CV class="size-5 md:size-6" /> Descargar CV
         </LinkButton>
       </nav>
-      <nav class="flex gap-x-4 mt-4">
-        <LinkButton
-          href="/SantiagoVallejosCV.pdf"
-          download="SantiagoVallejosCV.pdf"
-        >
-          <CV class="size-4 md:size-6" />
-          Descargar CV
-        </LinkButton>
-      </nav>
-    </main>
+    </div>
+  
+    <!-- Columna Derecha -->
+    <div class="flex flex-col items-center w-full lg:w-1/2 text-center gap-6">
+      <img
+        class="rounded-full w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56"
+        src="../SantiagoPhotoColor.png"
+        alt="Foto de Santiago"
+      />
+      <!-- Enlaces -->
+      <div class="mt-4">
+        <BadgeAnimation>Disponible para trabajar</BadgeAnimation>
+      </div>
+    </div>
   </SectionContainer>
-
+  
   <!-- Sobre mi -->
   <SectionContainer class="px-3 pb-2" id="sobre-mi">
     <div class="flex flex-col gap-12 max-w-custom pt-20 pb-20">
@@ -91,9 +73,9 @@ import AboutMe from "../components/AboutMe.astro";
 
       <!-- Educacion -->
       <div class="flex flex-col gap-3">
-        <h3 class="text-left text-2xl font-medium">Educación:</h3>
+        <h3 class="text-left text-2xl font-medium">Estudios</h3>
         <ul
-          class="marker:text-primary list-disc text-lg flex flex-col gap-4"
+          class="marker:text-primary list-disc text-lg flex flex-wrap"
         >
           <Education
             Estudio="Licenciatura en Sistemas de la Información"
@@ -102,20 +84,23 @@ import AboutMe from "../components/AboutMe.astro";
           />
           <EducationLink
             Estudio="Full Stack"
-            Institucion="Devlights -"
+            Institucion="Devlights"
             fecha="2024 - 2024"
+            skils=".Net, Angular, TypeScript, SignalR, Tailwind ,MS SQL Server, MongoDB, Git"
             link="/CertificadoDevlights.jpg"
           />
           <EducationLink
             Estudio="Full Stack"
-            Institucion="Talentos Digitales - "
+            Institucion="Talentos Digitales"
             fecha="2023 - 2024"
+            skils="NodeJS, PHP, Laravel, VueJS, MySQL, Bootstrap, Git"
             link="/CertificadoTalentosDigitales.png"
           />
           <EducationLink
             Estudio="Desarrollador Web"
-            Institucion="CoderHouse - "
+            Institucion="CoderHouse"
             fecha="2023"
+            skils="HTML, CSS, JavaScript"
             link="/CertificadoCoderHouse.png"
           />
         </ul>
@@ -124,7 +109,7 @@ import AboutMe from "../components/AboutMe.astro";
       <!-- Lista de tegnologias -->
       <div class="flex flex-col gap-5">
         <h3 class="text-left text-2xl font-medium">Tecnologías:</h3>
-        <div class="lg:w-[740px] mx-auto flex flex-col gap-7">
+        <div class="lg:w-[840px] mx-auto flex flex-col gap-7">
 
           <div>
           <h4 class="text-left font-semibold pb-2">Frontend</h4>

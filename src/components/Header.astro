@@ -33,7 +33,7 @@ const navItems = [
         class={`
         border border-black rounded-full
         px-3 py-1
-        flex flex-row items-center
+        flex flex-row items-center lg:gap-12
         bg-black/50
         backdrop-blur-2xl
         `}
@@ -48,18 +48,33 @@ const navItems = [
     </header>
     
     <script>
-    const $navAElements: Element[] = [...document.querySelectorAll('header nav a')]
+const $navAElements = [...document.querySelectorAll('header nav a')];
 
-    window.addEventListener('scroll', () => {
-        $navAElements.forEach(a => {
-        const selectionForSection = a.getAttribute('href')?.substring(1)
-        const sectionElement: HTMLDivElement | null = document.querySelector(selectionForSection || '')
+window.addEventListener('scroll', () => {
+    let activeFound = false;
 
-        if(!sectionElement) return
-        const selectionTop = sectionElement.offsetTop - 150
-        if(window.scrollY <= selectionTop) return
-        $navAElements.forEach(aToRemove => aToRemove.classList.remove('bg-white/15'))
-        a.classList.add('bg-white/15')
-        })
-    })
+    $navAElements.forEach(a => {
+        const selectionForSection = a.getAttribute('href')?.substring(1);
+        const sectionElement = document.querySelector(selectionForSection || '');
+
+        if (!sectionElement) return;
+
+        // Calcula el rango visible para la sección
+        const sectionTop = (sectionElement as HTMLElement).offsetTop - 150;
+        const sectionBottom = sectionTop + (sectionElement as HTMLElement).offsetHeight;
+
+        // Verifica si el scroll actual está dentro de esta sección
+        if (window.scrollY >= sectionTop && window.scrollY < sectionBottom && !activeFound) {
+            $navAElements.forEach(aToRemove => aToRemove.classList.remove('bg-white/15'));
+            a.classList.add('bg-white/15');
+            activeFound = true; // Marca como encontrado para evitar conflictos
+        }
+    });
+
+    // Si no se encuentra ninguna sección activa (por ejemplo, al estar por encima de todas),
+    // elimina cualquier clase activa de los elementos de navegación
+    if (!activeFound) {
+        $navAElements.forEach(aToRemove => aToRemove.classList.remove('bg-white/15'));
+    }
+});
 </script>

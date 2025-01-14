@@ -4,15 +4,20 @@ interface Props {
     Institucion: string;
     fecha: string;
     link: string;
+    skils: string;
 }
 
-const { Estudio, Institucion, fecha, link} = Astro.props;
+const { Estudio, Institucion, fecha, link, skils} = Astro.props;
 
 import Badge from './Badge.astro';
 ---
 
-    <li class="ml-5 text-blue-500">{Estudio}</li>
-    <span class="italic dark:opacity-60 text-base block">
-    {Institucion} <Badge><a href={link} target="_blank">Certificado</a></Badge>
-    <span class="block">{fecha}</span>
-    </span>
+<li class="xl:w-96 md:w-1/2 p-2">
+    <div class="border border-gray-700 p-6 rounded-lg">
+      <h2 class="text-lg text-gray-900 font-medium title-font mb-2">{Estudio}</h2>
+      <p class="text-sky-500/90">{Institucion}</p>
+      <p class="mb-2">{fecha}</p>
+      <p>{skils}</p>
+      <a href={link} target="_blank" class="leading-relaxed text-base"><Badge>Certificado</Badge></a>
+    </div>
+</li>

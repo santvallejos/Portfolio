@@ -137,7 +137,7 @@ const PROJECTS = [
   {
     title: "VirtualTome",
     description:
-      "Este proyecto es una biblioteca virtual donde puedes administrar una lista de libros, estos poseen: nombre, autor, categoría, url de imagen, fecha de publicación y su isbn. Cumple las funciones básicas de un CRUD que son:Listar, añadir, actualizar y eliminar un libro.",
+      "Este proyecto es una biblioteca virtual donde puedes administrar una lista de libros, estos poseen: nombre, autor, categoría, url de imagen, fecha de publicación y su isbn. Cumple las funciones básicas de un CRUD que son: listar, añadir, actualizar y eliminar un libro.",
     githubBackend: "https://github.com/santvallejos/VirtualTome-Backend",
     githubFrontend: "https://github.com/santvallejos/VirtualTome-Frontend",
     video: './projects/VirtualTome 1.0.mp4',
@@ -149,30 +149,13 @@ const PROJECTS = [
     github: "https://github.com/santvallejos/To-doList",
     image: "./projects/To-DolistShots.png",
     tags: [TAGS.ANGULAR],
-  },
-  {
-    title: "Calculadora Web",
-    description:
-      "Calculadora básica con el fin de practicar JS. Creado desde cero con:",
-    link: "https://santvallejos.github.io/CalculadoraJS/",
-    github: "https://github.com/santvallejos/CalculadoraJS",
-    image: "./projects/calculadora.webp",
-    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIP],
-  },
-  {
-    title: "Sitio web con Login y Register",
-    description:
-      "Página web Desarrollada en el programa Talentos Digitales con el objetivo de construir un sistema de login y register además del aspecto visual que posee con Bootstrap. Creado desde cero con:",
-    github: "https://github.com/santvallejos/LoginRegisterTalentosDigitales",
-    image: "./projects/proyectoTalentosDigitales.webp",
-    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIP, TAGS.CODEIGNITER ,TAGS.PHP, TAGS.MYSQL],
   }
 ]
 ---
 
 <section class="container mx-auto flex flex-col gap-y-16">
   {
-    PROJECTS.map(({ image, video, title, description, tags, link, github, githubBackend, githubFrontend, trello}) => (
+    PROJECTS.map(({ image, video, title, description, tags, github, githubBackend, githubFrontend, trello}) => (
       <article class="max-w-screen-md mx-auto">
         <h3 class="text-2xl font-semibold mb-2 text-blue-500/100">
           {title}
@@ -220,12 +203,12 @@ const PROJECTS = [
               Ver código Frontend
             </LinkButton>
           )}
-          {link && (
+{/*           {link && (
             <LinkButton href={link}>
               <Browser class="size-6"/>
             Ir al sitio web
           </LinkButton>
-          )}
+          )} */}
         </div> 
         <div class="flex gap-x-4 items-end justify-start mt-4">
           {trello && (

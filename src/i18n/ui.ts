@@ -3,7 +3,6 @@ export const languageList = {
     en: 'English'
 }
 
-
 export const labels = {
     es: {
         'nav.start': 'Inicio',

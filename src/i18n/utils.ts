@@ -1,4 +1,4 @@
-import { labels } from "./ui.ts";
+import { labels, showDefaultLang } from "./ui.ts";
 
 const defaultLang = 'es';
 

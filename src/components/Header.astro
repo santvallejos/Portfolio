@@ -7,17 +7,7 @@ const currentLang = Astro.currentLocale || 'es';
 
 const translateLabels = useTranslations(currentLang as keyof typeof languageList);
 
-// Función para obtener la URL relativa sin la barra final
-const getCleanRelativeLocaleUrl = (locale, path) => {
-  const url = getRelativeLocaleUrl(locale, path);
-  return url.endsWith('/') ? url.slice(0, -1) : url; // Elimina la barra final si existe
-};
-
 const navItems = [
-    {
-        title: translateLabels("nav.start"),
-        url: getCleanRelativeLocaleUrl(currentLang, '/#top')
-    },
     {
         title: translateLabels("nav.about"),
         url: getRelativeLocaleUrl(currentLang, '/#sobre-mi')

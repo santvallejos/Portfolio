@@ -30,14 +30,14 @@ const translateLabels = useTranslations (currentLang as keyof typeof languageLis
   description="Contrata a Santiago Vallejos para la creacion de tus proyectos. Programador Full Stack. Me epecializo en crear aplicaciones únicas."
 >
   <!-- Presentacion -->
-  <SectionContainer id="contacto/" class="py-44 pb-24 flex flex-col lg:flex-row items-center lg:items-start gap-8 p-2">
+  <SectionContainer id="contacto/" class="py-44 pb-24 flex flex-col lg:flex-row items-center gap-8 p-2">
     <!-- Columna Izquierda -->
     <div class="flex flex-col gap-6 w-full lg:w-1/2 text-left">
-      <h1 class="text-dark text-3xl text-center lg:text-start md:text-4xl lg:text-5xl font-bold dark:text-white">
+      <h1 class="p-1 text-dark text-3xl text-center lg:text-start md:text-4xl lg:text-[43px] font-bold dark:text-white typing">
         {translateLabels("presentation.h1")}
       </h1>
-      <h2 class="text-xl text-center lg:text-start lg:text-2xl text-wrap max-w-[700px]">
-        Soy <span class="text-yellow-500/90">Full Stack Developer</span>, de 
+      <h2 class="p-1 text-xl text-center lg:text-start lg:text-2xl text-wrap max-w-[700px]">
+        <span class="text-yellow-500/90">Full Stack Developer</span>, de 
         <span class="text-sky-500/90">Corrientes, Argentina 🧉</span>.
       </h2>
       <nav class="grid grid-cols-2 gap-4 ">
@@ -133,7 +133,7 @@ const translateLabels = useTranslations (currentLang as keyof typeof languageLis
             Src="/icons/typescript-icon-svgrepo-com.svg"
             Name="Typescript"/>
 
-            <Technologie Src="/icons/tailwind-2a43431b.svg" Name="Tailwind" ' />
+            <Technologie Src="/icons/tailwind-2a43431b.svg" Name="Tailwind"/>
 
             <Technologie Src="/icons/astro-svgrepo-com.svg" Name="Astro" />
 
@@ -141,7 +141,7 @@ const translateLabels = useTranslations (currentLang as keyof typeof languageLis
 
             <Technologie Src="/icons/react-9fe43511.svg" Name="React" />
 
-            <Technologie Src="/icons/vuejs.svg" Name="VueJs" />
+            <Technologie Src="/icons/vuejs.svg" Name="VueJS" />
           </ul>
         </div>
 
@@ -204,3 +204,28 @@ const translateLabels = useTranslations (currentLang as keyof typeof languageLis
     <Projects />
   </SectionContainer>
 </Layout>
+
+<style>
+  /* Animación de escritura */
+  .typing {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #000000;
+    animation: typing 2s steps(12, end), cursor .8s steps(12, end) infinite;
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  @keyframes cursor {
+    50% {
+      border-color: transparent;
+    }
+  }
+  </style>

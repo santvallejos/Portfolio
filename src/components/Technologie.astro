@@ -7,6 +7,21 @@ interface Props {
 const { Src, Name} = Astro.props;
 ---
 
-<li class="list-none flex flex-col items-center justify-center gap-1">
-    <img src={Src} alt={Name} class="w-11 h-12 select-center">
-</li>
+<div class="relative inline-block group">
+  <li
+    class="list-none relative text-sm font-semibold text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-300 overflow-hidden"
+  >
+  <img src={Src} alt={Name} class="w-11 h-12 select-center"/>
+  </li>
+
+  <div
+    class="absolute invisible opacity-0 group-hover:visible group-hover:opacity-100 bottom-full left-1/2 -translate-x-1/2 mb-3 transition-all duration-300 ease-out transform group-hover:translate-y-0 translate-y-2"
+  >
+    <div
+      class="relative p-3 bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-md rounded-2xl border border-white/10 shadow-[0_0_30px_rgba(79,70,229,0.15)]"
+    >
+        <h3 class="text-sm font-semibold text-white">{Name}</h3>
+      </div>  
+    </div>
+  </div>
+</div>

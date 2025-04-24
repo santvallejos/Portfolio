@@ -19,7 +19,7 @@ export default function Hero() {
         canvas.height = window.innerHeight;
 
         const particles: Particle[] = [];
-        const particleCount = 100;
+        const particleCount = 200;
 
         class Particle {
             x: number;

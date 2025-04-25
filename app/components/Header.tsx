@@ -47,7 +47,7 @@ function Header() {
     return (
         <header
             className={`
-            flex pl-2 lg:justify-center items-center
+            flex max-[768px]:justify-start max-[768px]:pl-2 justify-center items-center
             mx-auto
             py-5
             sticky top-0

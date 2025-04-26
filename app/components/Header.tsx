@@ -30,7 +30,7 @@ function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const { theme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
-
+    
     // Evitar hidratación incorrecta esperando a que el componente se monte
     useEffect(() => {
         setMounted(true);
@@ -47,25 +47,23 @@ function Header() {
     return (
         <header
             className={`
-            flex max-[768px]:justify-start max-[768px]:pl-2 justify-center items-center
+            fixed top-0 left-0 right-0
+            flex justify-center items-center
             mx-auto
             py-5
-            sticky top-0
-            w-full xl:w-[1120px]
+            w-full
             z-50
-            pointer-events-auto
             `}
         >
             <nav
                 className={`
                 border border-black rounded-full
                 px-3 py-1
-                flex flex-row items-center justify-between
+                flex flex-row items-center
                 bg-black/50
                 backdrop-blur-2xl
-                relative
-                pointer-events-auto
-            `}
+                max-w-fit
+                `}
             >
                 <div className="flex items-center">
                     {/* Botón de menú hamburguesa para móviles */}
@@ -83,7 +81,7 @@ function Header() {
                     <div className="hidden md:flex md:flex-row md:items-center md:gap-4 lg:gap-12">
                         {itemsNav.map((item, index) => (
                             <a
-                                className="text-white hover:bg-white/10 rounded-full px-2 sm:px-3 transition text-sm sm:text-base pointer-events-auto"
+                                className="text-white hover:bg-white/10 rounded-full px-2 sm:px-3 transition text-sm sm:text-base"
                                 href={item.link}
                                 key={index}
                             >
@@ -112,7 +110,7 @@ function Header() {
 
                 {/* Menú desplegable para móviles */}
                 {menuOpen && (
-                    <div className="absolute top-full left-0 mt-2 w-48 bg-black/90 backdrop-blur-xl rounded-lg shadow-lg py-2 md:hidden z-50 pointer-events-auto">
+                    <div className="absolute top-full left-0 mt-2 w-48 bg-black/90 backdrop-blur-xl rounded-lg shadow-lg py-2 md:hidden z-50">
                         {itemsNav.map((item, index) => (
                             <a
                                 className="block px-4 py-2 text-white hover:bg-white/10 transition pointer-events-auto"

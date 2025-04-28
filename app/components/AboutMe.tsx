@@ -2,14 +2,15 @@ import { BlurFade } from "../components/magicui/blur-fade";
 
 // Definir las rutas de los medios (imágenes y video)
 const media = [
-    { type: "image", url: "/contentAboutMe/8.jpeg" },
-    { type: "image", url: "/contentAboutMe/6.jpeg" },
     { type: "image", url: "/contentAboutMe/1.jpg" },
-    { type: "video", url: "/contentAboutMe/4.mp4" },
-    { type: "image", url: "/contentAboutMe/7.jpeg" },
+    { type: "image", url: "/contentAboutMe/2.jpg" },
     { type: "image", url: "/contentAboutMe/3.jpg" },
     { type: "image", url: "/contentAboutMe/5.jpeg" },
-    { type: "image", url: "/contentAboutMe/2.jpg" },
+    { type: "video", url: "/contentAboutMe/4.mp4" },
+    { type: "image", url: "/contentAboutMe/6.jpeg" },
+    { type: "image", url: "/contentAboutMe/7.jpeg" },
+    { type: "image", url: "/contentAboutMe/8.jpeg" },
+    { type: "image", url: "/contentAboutMe/9.jpeg" },
 ];
 
 export default function AboutMe() {

@@ -3,19 +3,12 @@
 import React, { useState, useEffect } from "react";
 import { Badge } from "./ui/badge";
 import { motion, AnimatePresence } from "framer-motion";
+import TiltedCard from "./reactBits/titleCard";
 
 const TAGS = {
-    HTML: {
-        name: "HTML",
-        icon: "/public/icons/html-svgrepo-com.svg"
-    },
-    CSS: {
-        name: "CSS",
-        icon: "/public/icons/css-svgrepo-com.svg"
-    },
-    JAVASCRIPT: {
-        name: "JavaScript",
-        icon: "/public/icons/javascript-svgrepo-com.svg"
+    TAILWIND: {
+        name: "Tailwind",
+        icon: "/public/icons/tailwind-svgrepo-com.svg"
     },
     TYPESCRIPT: {
         name: "TypeScript",
@@ -36,14 +29,6 @@ const TAGS = {
     ASTRO: {
         name: "Astro",
         icon: "/public/icons/astro-svgrepo-com.svg"
-    },
-    C: {
-        name: "C",
-        icon: "/public/icons/c-svgrepo-com.svg"
-    },
-    CPLUSPLUS: {
-        name: "C++",
-        icon: "/public/icons/c-plus-plus-svgrepo-com.svg"
     },
     CSHARP: {
         name: "C#",
@@ -95,11 +80,11 @@ const PROJECTS = [
     {
         title: "proyecto 1",
         description: "descripcion del proyecto",
-        tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT],
+        tags: [TAGS.CSHARP, TAGS.DOTNET, TAGS.MYSQL],
         githubBackend: "url",
         githubFrontend: "url",
         web: "url",
-        img: "/public/images/imagen.png"
+        img: "/contentAboutMe/1.jpg"
     },
     {
         title: "proyecto 2",
@@ -108,7 +93,7 @@ const PROJECTS = [
         githubBackend: "url",
         githubFrontend: "url",
         web: "url",
-        img: "/public/images/imagen.png"
+        img: "/contentAboutMe/1.jpg"
     }
 ];
 
@@ -180,40 +165,88 @@ function Projects() {
             </div>
 
             <AnimatePresence>
-                <motion.ol 
-                    className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                <motion.div 
+                    className="flex flex-col gap-12"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.3 }}
                 >
-                    {filteredProjects.map(project => (
-                        <motion.li 
+                    {filteredProjects.map((project, index) => (
+                        <motion.div 
                             key={project.title}
-                            className="border rounded-lg p-4 hover:shadow-md transition-all"
+                            className="flex flex-col lg:flex-row gap-6 rounded-lg overflow-hidden"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
                             transition={{ duration: 0.3 }}
                         >
-                            <h3 className="text-lg font-bold mb-2">{project.title}</h3>
-                            <p className="mb-3">{project.description}</p>
-                            <div className="flex flex-wrap gap-2">
-                                {project.tags.map(tag => (
-                                    <Badge 
-                                        key={tag.name} 
-                                        className={`${
-                                            selectedTags.includes(tag.name) 
-                                                ? "bg-primary" 
-                                                : ""
-                                        }`}
-                                    >
-                                        {tag.name}
-                                    </Badge>
-                                ))}
+                            {/* Contenido del proyecto con orden alternado basado en el índice */}
+                            <div className={`flex flex-col lg:flex-row w-full ${index % 2 === 0 ? '' : 'lg:flex-row-reverse'}`}>
+                                {/* Contenedor de la imagen con TiltedCard */}
+                                <div className="w-full lg:w-1/2 flex justify-center items-center p-10">
+                                    <TiltedCard 
+                                        imageSrc={project.img.replace('/public', '')}
+                                        altText={`Imagen de ${project.title}`}
+                                        captionText={project.title}
+                                        containerHeight="300px"
+                                        containerWidth="100%"
+                                        imageHeight="300px"
+                                        imageWidth="100%"
+                                        rotateAmplitude={7}
+                                        scaleOnHover={1}
+                                        showMobileWarning={false}
+                                        showTooltip={true}
+                                        displayOverlayContent={true}
+                                    />
+                                </div>
+                                
+                                {/* Contenedor de la información */}
+                                <div className="w-full lg:w-1/2 p-4 flex flex-col justify-center">
+                                    <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
+                                    <p className="mb-4 text-gray-700 dark:text-gray-300">{project.description}</p>
+                                    
+                                    {/* Tags del proyecto */}
+                                    <div className="flex flex-wrap gap-2 mb-4">
+                                        {project.tags.map(tag => (
+                                            <Badge 
+                                                key={tag.name} 
+                                                className={`${
+                                                    selectedTags.includes(tag.name) 
+                                                        ? "bg-primary" 
+                                                        : ""
+                                                }`}
+                                            >
+                                                {tag.name}
+                                            </Badge>
+                                        ))}
+                                    </div>
+                                    
+                                    {/* Enlaces del proyecto */}
+                                    <div className="flex gap-3 mt-2">
+                                        {project.githubBackend && (
+                                            <a href={project.githubBackend} target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-primary">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-brand-github"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
+                                                <span className="sr-only">Backend</span>
+                                            </a>
+                                        )}
+                                        {project.githubFrontend && (
+                                            <a href={project.githubFrontend} target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-primary">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-brand-github"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
+                                                <span className="sr-only">Frontend</span>
+                                            </a>
+                                        )}
+                                        {project.web && (
+                                            <a href={project.web} target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-primary">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-world"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M3.6 9h16.8" /><path d="M3.6 15h16.8" /><path d="M11.5 3a17 17 0 0 0 0 18" /><path d="M12.5 3a17 17 0 0 1 0 18" /></svg>
+                                                <span className="sr-only">Web</span>
+                                            </a>
+                                        )}
+                                    </div>
+                                </div>
                             </div>
-                        </motion.li>
+                        </motion.div>
                     ))}
-                </motion.ol>
+                </motion.div>
             </AnimatePresence>
         </section>
     )

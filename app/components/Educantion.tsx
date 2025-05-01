@@ -70,10 +70,10 @@ export default function Timeline() {
     }, [isInView])
 
     return (
-        <section className="py-20 dark:bg-white bg-black">
+        <section className="py-20">
             <div className="container mx-auto px-4">
                 <motion.h2
-                    className="mb-16 text-center text-3xl font-bold tracking-tighter sm:text-4xl dark:text-black text-white"
+                    className="mb-16 text-center text-3xl font-bold tracking-tighter sm:text-4xl"
                     initial={{ opacity: 0 }}
                     animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                     transition={{ duration: 0.8 }}

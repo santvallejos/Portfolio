@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import AboutMe from "./components/AboutMe";
 import Projects from "./components/Projects";
 import Education from "./components/Educantion";
+import Comments from "./components/Comments";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <AboutMe/>
       <Projects/>
       <Education/>
+      <Comments/>
     </main>
   );
 }

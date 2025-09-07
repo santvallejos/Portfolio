@@ -39,9 +39,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div style={{ position: "absolute", width: "100%", zIndex: 50, pointerEvents: "none" }}>
-            <Header />
-          </div>
+          <Header />
           {children}
           {/* Footer */}
         </ThemeProvider>

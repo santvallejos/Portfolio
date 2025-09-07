@@ -3,37 +3,55 @@
 const itemsNav = [
     {
         title: "Inicio",
-        link: "/"
+        link: "/",
+        id: "home"
     },
     {
         title: "Sobre mí",
-        link: "/sobre-mi"
+        link: "/sobre-mi",
+        id: "about"
     },
     {
         title: "Estudios",
-        link: "/estudios"
+        link: "/estudios",
+        id: "education"
     },
     {
         title: "Proyectos",
-        link: "/proyectos"
+        link: "/proyectos",
+        id: "projects"
     },
     {
         title: "Contacto",
-        link: "/contacto"
+        link: "/contacto",
+        id: "contact"
     }
 ];
 
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
+import Link from 'next/link';
 
 function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
     const { theme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
     
     // Evitar hidratación incorrecta esperando a que el componente se monte
     useEffect(() => {
         setMounted(true);
+    }, []);
+
+    // Efecto de scroll para cambiar la apariencia del header
+    useEffect(() => {
+        const handleScroll = () => {
+            const isScrolled = window.scrollY > 20;
+            setScrolled(isScrolled);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     const toggleMenu = () => {
@@ -47,100 +65,134 @@ function Header() {
     return (
         <header
             className={`
-            fixed top-0 left-0 right-0
-            flex justify-center items-center
-            mx-auto
-            py-5
-            w-full
-            z-50
+                fixed top-0 left-0 right-0
+                flex justify-between items-center
+                px-4 md:px-8 lg:px-12
+                py-4 md:py-6
+                w-full
+                z-50
+                transition-all duration-300 ease-in-out
+                ${scrolled 
+                    ? 'bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200/20 dark:border-gray-800/20' 
+                    : 'bg-transparent'
+                }
             `}
         >
-            <nav
-                className={`
-                border border-black rounded-full
-                px-3 py-1
-                flex flex-row items-center
-                bg-black/50
-                backdrop-blur-2xl
-                max-w-fit
-                `}
-            >
-                <div className="flex items-center">
-                    {/* Botón de menú hamburguesa para móviles */}
-                    <button 
-                        className="md:hidden text-white p-2" 
-                        onClick={toggleMenu}
-                        aria-label="Menú"
+            {/* Logo/Brand */}
+            <div className="flex items-center">
+                <Link 
+                    href="/" 
+                    className="text-xl md:text-2xl font-bold text-black dark:text-white transition-colors hover:text-gray-600 dark:hover:text-gray-300"
+                >
+                    Portfolio
+                </Link>
+            </div>
+
+            {/* Navigation - Desktop */}
+            <nav className="hidden md:flex items-center gap-1">
+                {itemsNav.map((item) => (
+                    <Link
+                        key={item.id}
+                        href={item.link}
+                        className={`
+                            relative px-4 py-2 text-sm font-medium
+                            text-gray-700 dark:text-gray-300
+                            hover:text-black dark:hover:text-white
+                            transition-all duration-200
+                            rounded-full
+                            hover:bg-gray-100 dark:hover:bg-gray-800/50
+                            group
+                        `}
                     >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={menuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
-                        </svg>
-                    </button>
+                        {item.title}
+                        <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black dark:bg-white transition-all duration-200 group-hover:w-6 group-hover:left-1/2 group-hover:-translate-x-1/2"></span>
+                    </Link>
+                ))}
+            </nav>
 
-                    {/* Menú para pantallas medianas y grandes */}
-                    <div className="hidden md:flex md:flex-row md:items-center md:gap-4 lg:gap-12">
-                        {itemsNav.map((item, index) => (
-                            <a
-                                className="text-white hover:bg-white/10 rounded-full px-2 sm:px-3 transition text-sm sm:text-base"
-                                href={item.link}
-                                key={index}
-                            >
-                                {item.title}
-                            </a>
-                        ))}
-                        {mounted && (
-                            <button
-                                onClick={toggleTheme}
-                                className="text-white p-2 rounded-full hover:bg-white/10 transition pointer-events-auto"
-                                aria-label={theme === 'dark' ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
-                            >
-                                {theme === 'dark' ? (
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                                    </svg>
-                                ) : (
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                                    </svg>
-                                )}
-                            </button>
+            {/* Theme Toggle & Mobile Menu */}
+            <div className="flex items-center gap-2">
+                {/* Theme Toggle */}
+                {mounted && (
+                    <button
+                        onClick={toggleTheme}
+                        className={`
+                            p-2 rounded-full
+                            text-gray-700 dark:text-gray-300
+                            hover:text-black dark:hover:text-white
+                            hover:bg-gray-100 dark:hover:bg-gray-800/50
+                            transition-all duration-200
+                            pointer-events-auto
+                        `}
+                        aria-label={theme === 'dark' ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
+                    >
+                        {theme === 'dark' ? (
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                        ) : (
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                            </svg>
                         )}
-                    </div>
-                </div>
+                    </button>
+                )}
 
-                {/* Menú desplegable para móviles */}
-                {menuOpen && (
-                    <div className="absolute top-full left-0 mt-2 w-48 bg-black/90 backdrop-blur-xl rounded-lg shadow-lg py-2 md:hidden z-50">
-                        {itemsNav.map((item, index) => (
-                            <a
-                                className="block px-4 py-2 text-white hover:bg-white/10 transition pointer-events-auto"
+                {/* Mobile Menu Button */}
+                <button 
+                    className={`
+                        md:hidden p-2 rounded-full
+                        text-gray-700 dark:text-gray-300
+                        hover:text-black dark:hover:text-white
+                        hover:bg-gray-100 dark:hover:bg-gray-800/50
+                        transition-all duration-200
+                    `}
+                    onClick={toggleMenu}
+                    aria-label="Menú"
+                >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round" 
+                            strokeWidth={2} 
+                            d={menuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} 
+                        />
+                    </svg>
+                </button>
+            </div>
+
+            {/* Mobile Menu */}
+            {menuOpen && (
+                <div className="absolute top-full left-0 right-0 mt-2 mx-4 md:hidden">
+                    <div className={`
+                        bg-white/95 dark:bg-black/95 
+                        backdrop-blur-xl 
+                        rounded-2xl 
+                        border border-gray-200/20 dark:border-gray-800/20
+                        shadow-lg
+                        py-4
+                        z-50
+                    `}>
+                        {itemsNav.map((item) => (
+                            <Link
+                                key={item.id}
                                 href={item.link}
-                                key={index}
+                                className={`
+                                    block px-6 py-3 
+                                    text-gray-700 dark:text-gray-300
+                                    hover:text-black dark:hover:text-white
+                                    hover:bg-gray-100 dark:hover:bg-gray-800/50
+                                    transition-all duration-200
+                                    font-medium
+                                `}
                                 onClick={() => setMenuOpen(false)}
                             >
                                 {item.title}
-                            </a>
+                            </Link>
                         ))}
-                        {mounted && (
-                            <button
-                                onClick={toggleTheme}
-                                className="text-white p-2 rounded-full hover:bg-white/10 transition pointer-events-auto"
-                                aria-label={theme === 'dark' ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
-                            >
-                                {theme === 'dark' ? (
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                                    </svg>
-                                ) : (
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                                    </svg>
-                                )}
-                            </button>
-                        )}
                     </div>
-                )}
-            </nav>
+                </div>
+            )}
         </header>
     );
 }

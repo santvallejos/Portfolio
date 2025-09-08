@@ -5,6 +5,7 @@ import "./globals.css";
 // Components
 import Header from "./components/Header";
 import { ThemeProvider } from "./components/theme-provider"
+import Footer from "./components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +28,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning
+    >
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         style={{ margin: 0, overflowX: "hidden", position: "relative" }}
@@ -41,7 +43,7 @@ export default function RootLayout({
         >
           <Header />
           {children}
-          {/* Footer */}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

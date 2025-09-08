@@ -1,114 +1,123 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { useRef, useEffect, useState } from "react"
+import { useRef } from "react"
 import { useInView } from "framer-motion"
 
 type TimelineItem = {
     year: string
     title: string
-    description: string
+    company?: string
     institution?: string
+    description: string
+    technologies?: string[]
+    type: 'work' | 'education'
 }
 
-export default function Timeline() {
+export default function ExperienceAndEducation() {
     const sectionRef = useRef(null)
     const isInView = useInView(sectionRef, { once: true, amount: 0.2 })
-    const itemRefs = useRef<(HTMLDivElement | null)[]>([])
-    const [lineHeight, setLineHeight] = useState(0)
 
     const timelineItems: TimelineItem[] = [
         {
-            year: "2022",
-            title: "Licenciatura en sistemas de la información",
-            description: "Carrera de grado en sistemas de información",
-            institution: "Universidad Nacional del Nordeste",
-        },
-        {
-            year: "2023-2024",
-            title: "Full Stack Developer",
-            description: "Programa de formación para Full Stack developers, con especialización en PHP (Laravel), MySQL y Vue.JS",
-            institution: "Talentos Digitales",
+            year: "2024",
+            title: "Frontend Developer",
+            company: "Freelance",
+            description: "Desarrollo de aplicaciones web modernas con React, Next.js y TypeScript.",
+            technologies: ["React", "Next.js", "TypeScript"],
+            type: 'work'
         },
         {
             year: "2024-2025",
-            title: "Full Stack Developer",
-            description: "Bootcamp de formación para Full Stack developers, con especialización en .Net, MS SQL Server, MongoDB y Angular",
+            title: "Full Stack Developer Bootcamp",
             institution: "Bootcamp 3.0 By Devlights",
+            description: "Bootcamp de formación para Full Stack developers, con especialización en .Net, MS SQL Server, MongoDB y Angular",
+            technologies: [".NET", "SQL Server", "MongoDB"],
+            type: 'education'
         },
         {
-            year: "2025",
-            title: "Ingles Británico",
-            description: "Curso de ingles británico para jovenes y adultos hasta nivel B2",
+            year: "2023-2024",
+            title: "Full Stack Developer Program",
+            institution: "Talentos Digitales",
+            description: "Programa de formación para Full Stack developers, con especialización en PHP (Laravel), MySQL y Vue.JS",
+            technologies: ["PHP", "Laravel", "Vue.js"],
+            type: 'education'
+        },
+        {
+            year: "2022",
+            title: "Licenciatura en Sistemas de la Información",
             institution: "Universidad Nacional del Nordeste",
+            description: "Carrera de grado en sistemas de información",
+            technologies: ["Programming", "Database", "Systems"],
+            type: 'education'
         },
     ]
 
-    // Actualizar la altura de la línea cuando los elementos se rendericen
-    useEffect(() => {
-        const updateLineHeight = () => {
-            if (itemRefs.current.length > 0) {
-                const lastItem = itemRefs.current[itemRefs.current.length - 1]
-                if (lastItem) {
-                    const lastItemRect = lastItem.getBoundingClientRect()
-                    const containerRect = sectionRef.current
-                        ? (sectionRef.current as HTMLElement).getBoundingClientRect()
-                        : { top: 0 }
-                    const relativeBottom = lastItemRect.bottom - containerRect.top
-                    setLineHeight(relativeBottom)
-                }
-            }
-        }
-
-        // Actualizar después del renderizado inicial y en cada cambio de tamaño de ventana
-        updateLineHeight()
-        window.addEventListener("resize", updateLineHeight)
-
-        return () => {
-            window.removeEventListener("resize", updateLineHeight)
-        }
-    }, [isInView])
-
     return (
-        <section className="py-20">
-            <div className="container mx-auto px-4">
-                <motion.h2
-                    className="mb-16 text-center text-3xl font-bold tracking-tighter sm:text-4xl"
-                    initial={{ opacity: 0 }}
-                    animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                    transition={{ duration: 0.8 }}
-                >
-                    Formación Académica
-                </motion.h2>
+        <section className="py-20 bg-black text-white">
+            <div className="container mx-auto px-4 max-w-6xl">
+                {/* Header */}
+                <div className="flex items-center justify-between mb-20">
+                    <motion.h2
+                        className="text-5xl md:text-6xl font-light"
+                        initial={{ opacity: 0 }}
+                        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        Selected Work
+                    </motion.h2>
+                    <motion.span
+                        className="text-lg text-zinc-400 hidden md:block"
+                        initial={{ opacity: 0 }}
+                        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                    >
+                        2022 — 2025
+                    </motion.span>
+                </div>
 
-                <div ref={sectionRef} className="relative mx-auto max-w-4xl">
-                    {/* Línea vertical - visible en todos los tamaños de pantalla */}
-                    <div
-                        className="absolute left-4 top-0 w-0.5 bg-zinc-700 md:left-1/2 md:-translate-x-1/2"
-                        style={{ height: `${lineHeight}px` }}
-                    />
-
+                {/* Timeline Items */}
+                <div ref={sectionRef} className="space-y-20 md:space-y-32">
                     {timelineItems.map((item, index) => (
                         <motion.div
                             key={index}
-                            ref={(el: HTMLDivElement | null) => {
-                                itemRefs.current[index] = el;
-                            }}
-                            className="relative mb-12 md:mb-24"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                            transition={{ duration: 0.6, delay: index * 0.2 }}
+                            className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start border-b border-gray-400 pb-3"
+                            initial={{ opacity: 0, y: 40 }}
+                            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+                            transition={{ duration: 0.8, delay: index * 0.2 }}
                         >
-                            {/* Punto - visible en todos los tamaños de pantalla */}
-                            <div className="absolute left-4 top-1/2 z-10 h-4 w-4 -translate-y-1/2 rounded-full bg-white md:left-1/2 md:h-5 md:w-5 md:-translate-x-1/2" />
+                            {/* Year - Left column on desktop, top on mobile */}
+                            <div className="md:col-span-2">
+                                <span className="text-3xl md:text-4xl font-light text-zinc-400">
+                                    {item.year}
+                                </span>
+                            </div>
 
-                            {/* Contenido con estructura diferente para móvil vs desktop */}
-                            <div className={`flex flex-row pl-12 md:pl-0 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
-                                <div className="w-full rounded-lg bg-zinc-800 p-6 shadow-lg md:w-[calc(50%-2rem)]">
-                                    <div className="mb-2 inline-block rounded bg-black px-3 py-1 text-sm font-semibold">{item.year}</div>
-                                    <h3 className="mb-2 text-xl font-bold">{item.title}</h3>
-                                    {item.institution && <p className="mb-2 text-sm text-zinc-400">{item.institution}</p>}
-                                    <p className="text-zinc-300">{item.description}</p>
+                            {/* Content - Right column on desktop, bottom on mobile */}
+                            <div className="md:col-span-10 space-y-4">
+                                <div>
+                                    <h3 className="text-2xl md:text-3xl font-light mb-2">
+                                        {item.title}
+                                    </h3>
+                                    <p className="text-lg text-zinc-400 mb-4">
+                                        {item.company || item.institution}
+                                    </p>
+                                </div>
+
+                                <p className="text-lg text-zinc-300 leading-relaxed max-w-2xl">
+                                    {item.description}
+                                </p>
+
+                                {/* Technologies - Right aligned on desktop */}
+                                <div className="flex flex-wrap gap-3 justify-start md:justify-end mt-6">
+                                    {item.technologies?.map((tech, techIndex) => (
+                                        <span
+                                            key={techIndex}
+                                            className="text-sm text-zinc-400 bg-zinc-800/30 px-4 py-2 rounded-full"
+                                        >
+                                            {tech}
+                                        </span>
+                                    ))}
                                 </div>
                             </div>
                         </motion.div>

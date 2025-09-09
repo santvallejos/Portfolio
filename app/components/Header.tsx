@@ -8,22 +8,22 @@ const itemsNav = [
     },
     {
         title: "Sobre mí",
-        link: "/sobre-mi",
+        link: "#about-me",
         id: "about"
     },
     {
         title: "Estudios",
-        link: "/estudios",
+        link: "#experience",
         id: "education"
     },
     {
         title: "Proyectos",
-        link: "/proyectos",
+        link: "#projects",
         id: "projects"
     },
     {
         title: "Contacto",
-        link: "/contacto",
+        link: "#contact",
         id: "contact"
     }
 ];
@@ -84,7 +84,7 @@ function Header() {
                     href="/" 
                     className="text-xl md:text-2xl font-bold text-black dark:text-white transition-colors hover:text-gray-600 dark:hover:text-gray-300"
                 >
-                    Portfolio
+                    SV
                 </Link>
             </div>
 

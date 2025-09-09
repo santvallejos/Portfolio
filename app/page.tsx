@@ -3,7 +3,7 @@
 import Hero from "./components/Hero";
 import AboutMe from "./components/AboutMe";
 import Projects from "./components/Projects";
-import Education from "./components/Educantion";
+import Trajectory from "./components/Trajectory";
 import Contact from "./components/Contact";
 
 
@@ -12,7 +12,7 @@ export default function Home() {
     <main className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
       <Hero />
       <AboutMe/>
-      <Education/>
+      <Trajectory/>
       <Projects/>
       <Contact/>
     </main>

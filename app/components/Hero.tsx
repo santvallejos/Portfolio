@@ -137,16 +137,25 @@ export default function Hero() {
                 >
                     <Dock direction="middle">
                         <DockIcon>
-                            <Icons.gitHub className="size-20" />
+                            <a href="https://github.com/santvallejos" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                                <Icons.gitHub />
+                            </a>
                         </DockIcon>
                         <DockIcon>
-                            <Icons.linkdInd className="size-20"/>
+                            <a href="https://www.linkedin.com/in/santiago-vallejos-97a933236/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                <Icons.linkdInd  />
+                            </a>
                         </DockIcon>
                         <DockIcon>
-                            <Icons.email className="size-20" />
+                            <a href="mailto:vallejossantiago1412@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
+                                <Icons.email />
+                            </a>
                         </DockIcon>
                         <DockIcon>
-                            <Icons.cv className="size-20" />
+                            {/* Necesito que pueda descargar el cv que tengo en la carpeta public */}
+                            <a href="/Santiago_Vallejos_CV.pdf" download target="_blank" rel="noopener noreferrer" aria-label="Download CV">
+                                <Icons.cv />
+                            </a>
                         </DockIcon>
                     </Dock>
                 </motion.div>

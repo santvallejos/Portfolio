@@ -4,6 +4,48 @@ import { TAGS } from './tags';
 // Datos de proyectos
 export const PROJECTS: Project[] = [
     {
+        id: 'skin',
+        title: "Skin",
+        description: "Skin es un e-commerce/catálogo que permite gestionar tu propio carrito de compras y confirmar el pedido a través de Whatsapp.",
+        tags: [TAGS.REACT, TAGS.TAILWINDCSS, TAGS.SUPABASE],
+        links: {
+            github: "https://github.com/santvallejos/Skin-WebApp",
+            web: "https://skincts.vercel.app/"
+        },
+        media: {
+            type: 'image',
+            src: "/projects/1753111419372.jpg"
+        }
+    },
+    {
+        id: 'dev-space',
+        title: "DevSpace",
+        description: "DevSpace es un aplicación que permite centralizar y gestionar tus recursos, tales como: links, textos/notas y líneas de código. Contiene una API que interactúa con la base de datos del usuario y un dashboard para navegar dentro de la unidad de la base de datos.",
+        tags: [TAGS.DOTNET, TAGS.MONGODB, TAGS.REACT, TAGS.TAILWINDCSS],
+        links: {
+            github: "https://github.com/santvallejos/DevSpace-App",
+            web: "https://devspace-website.vercel.app/"
+        },
+        media: {
+            type: 'image',
+            src: "/projects/961_1x_shots_so.png"
+        }
+    },
+        {
+        id: 'aguarago',
+        title: "AguaraGo",
+        description: "AguaraGo es una asistente virtual que se realizado en la jornada de la HackIAthon by Devlights con el fin de ayudar al turismo en el NEA (Nordeste Argentino). Permite a los usuarios obtener información sobre destinos turísticos, actividades, alojamientos y gastronomía en la región del NEA.",
+        tags: [TAGS.NEXT, TAGS.TAILWINDCSS, TAGS.LANGCHAIN, TAGS.JAVASCRIPT, TAGS.GEMINI],
+        links: {
+            github: "https://github.com/santvallejos/AguaraGo",
+            web: "https://aguarago.vercel.app/"
+        },
+        media: {
+            type: 'image',
+            src: "/projects/651_1x_shots_so.png"
+        }
+    },
+    {
         id: 'calendar-events',
         title: "Calendar Of Events",
         description: "Permite administrar eventos o recordatorios dentro de un calendario, tiene la función de mostrar, crear, actualizar y eliminar eventos de forma sencilla que a su vez a través de SignalR nos avisa cuando un evento ha iniciado.",

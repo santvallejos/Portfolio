@@ -43,6 +43,16 @@ export const TAGS: Record<string, Tag> = {
         color: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
         category: 'framework',
     },
+    TAILWINDCSS: {
+        name: 'Tailwind CSS',
+        color: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-200',
+        category: 'framework',
+    },
+    NEXT: {
+        name: 'Next.js',
+        color: 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200',
+        category: 'framework',
+    },
 
     // Backend Technologies
     NODEJS: {
@@ -87,6 +97,16 @@ export const TAGS: Record<string, Tag> = {
         color: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
         category: 'database',
     },
+    MONGODB: {
+        name: 'MongoDB',
+        color: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
+        category: 'database',
+    },
+    SUPABASE: {
+        name: 'Supabase',
+        color: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200',
+        category: 'database',
+    },
 
     // Tools
     GIT: {
@@ -97,6 +117,16 @@ export const TAGS: Record<string, Tag> = {
     TRELLO: {
         name: 'Trello',
         color: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+        category: 'tool',
+    },
+    LANGCHAIN: {
+        name: 'LangChain',
+        color: 'bg-violet-100 text-violet-800 dark:bg-violet-900 dark:text-violet-200',
+        category: 'tool',
+    },
+    GEMINI: {
+        name: 'Gemini AI',
+        color: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200',
         category: 'tool',
     }
 };

@@ -3,7 +3,6 @@ export interface Tag {
     name: string;
     color: string;
     category?: 'frontend' | 'backend' | 'database' | 'framework' | 'tool';
-    icon?: React.ReactNode;
 }
 
 export interface Project {

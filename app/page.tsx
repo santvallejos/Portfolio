@@ -1,10 +1,10 @@
 "use client";
 
-import Hero from "./components/Hero";
-import AboutMe from "./components/AboutMe";
-import Projects from "./components/Projects";
-import Trajectory from "./components/Trajectory";
-import Contact from "./components/Contact";
+import Hero from "./components/hero/section";
+import AboutMe from "./components/about me/section";
+import Projects from "./components/projects/section";
+import Trajectory from "./components/trajectory/section";
+import Contact from "./components/contact/section";
 
 
 export default function Home() {

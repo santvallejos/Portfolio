@@ -1,5 +1,22 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import React from "react";
+
+interface TiltedCardProps {
+    mediaSrc: string;
+    altText?: string;
+    captionText?: string;
+    containerHeight?: string;
+    containerWidth?: string;
+    mediaHeight?: string;
+    mediaWidth?: string;
+    scaleOnHover?: number;
+    rotateAmplitude?: number;
+    showMobileWarning?: boolean;
+    showTooltip?: boolean;
+    overlayContent?: React.ReactNode;
+    displayOverlayContent?: boolean;
+}
 
 const springValues = {
     damping: 30,
@@ -21,8 +38,8 @@ export default function TiltedCard({
     showTooltip = true,
     overlayContent = null,
     displayOverlayContent = false,
-}) {
-    const ref = useRef(null);
+}: TiltedCardProps) {
+    const ref = useRef<HTMLDivElement>(null);
     const x = useMotionValue(0);
     const y = useMotionValue(0);
     const rotateX = useSpring(useMotionValue(0), springValues);
@@ -36,7 +53,7 @@ export default function TiltedCard({
     });
 
     const [lastY, setLastY] = useState(0);
-    const [mediaType, setMediaType] = useState("image");
+    const [mediaType, setMediaType] = useState<"image" | "video">("image");
 
     // Determinar si el contenido es una imagen o un video basado en la extensión o URL
     useEffect(() => {
@@ -51,7 +68,7 @@ export default function TiltedCard({
         }
     }, [mediaSrc]);
 
-    function handleMouse(e) {
+    function handleMouse(e: React.MouseEvent<HTMLDivElement>) {
         if (!ref.current) return;
 
         const rect = ref.current.getBoundingClientRect();

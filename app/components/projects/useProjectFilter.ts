@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react";
-import { Project } from "./types";
+import { Project } from "../../types/Project";
 
 export const useProjectFilter = (projects: Project[]) => {
     const [selectedTags, setSelectedTags] = useState<string[]>([]);

@@ -6,10 +6,11 @@ export { default as ProjectLinks } from './ProjectLinks';
 export { default as ProjectCard } from './ProjectCard';
 export { useProjectFilter } from './useProjectFilter';
 
-// Datos y tipos
-export { TAGS } from './tags';
+// Datos
 export { PROJECTS } from './data';
-export type { Tag, Project, ProjectFilterHook } from './types';
+
+// Tipos (usando los tipos actualizados)
+export type { Project, ProjectFilterHook } from '../../types/Project';
 
 // Utilidades
 export * from './utils';

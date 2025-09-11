@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Project } from "./types";
+import { Project } from "../../types/Project";
 
 interface ProjectLinksProps {
     links: Project['links'];

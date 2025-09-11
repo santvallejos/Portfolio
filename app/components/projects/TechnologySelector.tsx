@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { TAGS } from "./tags";
+import Image from "next/image";
+import TAGS from "../tags"; // Cambiar a usar las tags centralizadas
 
 interface TechnologySelectorProps {
     selectedTags: string[];
@@ -17,13 +18,15 @@ const TechnologySelector = ({
 }: TechnologySelectorProps) => {
     const [isOpen, setIsOpen] = useState(false);
     
-    // Organizar tecnologías por categorías
+    // Organizar tecnologías por categorías usando el nuevo sistema
     const categorizedTags = {
         frontend: Object.values(TAGS).filter(tag => tag.category === 'frontend'),
         backend: Object.values(TAGS).filter(tag => tag.category === 'backend'),
         database: Object.values(TAGS).filter(tag => tag.category === 'database'),
         framework: Object.values(TAGS).filter(tag => tag.category === 'framework'),
-        tool: Object.values(TAGS).filter(tag => tag.category === 'tool'),
+        tools: Object.values(TAGS).filter(tag => tag.category === 'tools'),
+        language: Object.values(TAGS).filter(tag => tag.category === 'language'),
+        ai: Object.values(TAGS).filter(tag => tag.category === 'ai'),
     };
 
     const categoryLabels = {
@@ -31,7 +34,9 @@ const TechnologySelector = ({
         backend: 'Backend',
         database: 'Base de Datos',
         framework: 'Frameworks',
-        tool: 'Herramientas'
+        tools: 'Herramientas',
+        language: 'Lenguajes',
+        ai: 'IA & ML',
     };
 
     const handleClickOutside = () => {
@@ -116,17 +121,41 @@ const TechnologySelector = ({
                                                     key={tag.name}
                                                     onClick={() => onTagSelect(tag.name)}
                                                     className={`
-                                                        px-3 py-1.5 rounded-full text-sm font-medium
-                                                        transition-all duration-200 cursor-pointer
+                                                        px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 
+                                                        flex items-center gap-2 border
                                                         ${selectedTags.includes(tag.name)
-                                                            ? 'bg-black text-white dark:bg-white dark:text-black shadow-md'
-                                                            : 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                                                            ? 'bg-black text-white dark:bg-white dark:text-black border-black dark:border-white'
+                                                            : 'bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600'
                                                         }
                                                     `}
-                                                    whileHover={{ scale: 1.05 }}
-                                                    whileTap={{ scale: 0.95 }}
+                                                    whileHover={{ scale: 1.02 }}
+                                                    whileTap={{ scale: 0.98 }}
+                                                    initial={{ opacity: 0, y: 10 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    transition={{ 
+                                                        duration: 0.2,
+                                                        delay: tags.indexOf(tag) * 0.02
+                                                    }}
                                                 >
-                                                    {tag.name}
+                                                    <Image 
+                                                        src={tag.icon} 
+                                                        alt={tag.name}
+                                                        width={16}
+                                                        height={16}
+                                                        className="w-4 h-4"
+                                                    />
+                                                    <span>{tag.name}</span>
+                                                    {selectedTags.includes(tag.name) && (
+                                                        <motion.div
+                                                            initial={{ scale: 0 }}
+                                                            animate={{ scale: 1 }}
+                                                            className="w-3 h-3"
+                                                        >
+                                                            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                                            </svg>
+                                                        </motion.div>
+                                                    )}
                                                 </motion.button>
                                             ))}
                                         </div>

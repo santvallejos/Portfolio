@@ -2,10 +2,11 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Project } from "./types";
+import { Project } from "../../types/Project";
 import OptimizedImage from "./OptimizedImage";
 import VideoPlayer from "./VideoPlayer";
 import ProjectLinks from "./ProjectLinks";
+import TechTag from "../ui/TechTag"; // Importar el componente TechTag
 
 interface ProjectCardProps {
     project: Project;
@@ -14,7 +15,7 @@ interface ProjectCardProps {
     onTagClick: (tagName: string) => void;
 }
 
-const ProjectCard = ({ project, index, selectedTags, onTagClick }: ProjectCardProps) => {
+const ProjectCard = ({ project, index, selectedTags }: ProjectCardProps) => {
     const isReversed = index % 2 !== 0;
 
     return (
@@ -97,26 +98,27 @@ const ProjectCard = ({ project, index, selectedTags, onTagClick }: ProjectCardPr
                         transition={{ duration: 0.6, delay: 0.5 }}
                     >
                         {project.tags.map((tag, tagIndex) => (
-                            <motion.button
+                            <motion.div
                                 key={tag.name}
                                 className={`
-                                    px-3 py-1.5 rounded-full text-xs font-medium cursor-pointer
                                     transition-all duration-200
-                                    ${tag.color}
                                     ${selectedTags.includes(tag.name) 
                                         ? 'ring-2 ring-black dark:ring-white ring-opacity-50 scale-105' 
                                         : 'hover:scale-105'
                                     }
                                 `}
-                                onClick={() => onTagClick(tag.name)}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.3, delay: tagIndex * 0.1 }}
                             >
-                                {tag.name}
-                            </motion.button>
+                                <TechTag 
+                                    tag={tag} 
+                                    size="sm" 
+                                    variant="default"
+                                />
+                            </motion.div>
                         ))}
                     </motion.div>
 

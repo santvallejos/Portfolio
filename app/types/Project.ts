@@ -1,15 +1,10 @@
-// Tipos TypeScript para proyectos
-export interface Tag {
-    name: string;
-    color: string;
-    category?: 'frontend' | 'backend' | 'database' | 'framework' | 'tool';
-}
+import { TagConfig } from "./TagConfig";
 
 export interface Project {
     id: string;
     title: string;
     description: string;
-    tags: Tag[];
+    tags: TagConfig[];
     links: {
         github?: string;
         githubBackend?: string;

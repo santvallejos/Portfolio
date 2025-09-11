@@ -7,72 +7,84 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 
 const reviews = [
     {
+        id: "skin-1",
         name: "Skin",
         username: "@skin",
-        body: "Muchas gracias por llevar a cabo nuestra pagina web, Santiago. Quedó excelente y estamos muy contentos con el resultado. ¡Te deseamos mucho éxito en tus futuros proyectos!",
+        body: "Muchas gracias por llevar a cabo nuestra página web, Santiago. Quedó excelente y estamos muy contentos con el resultado. ¡Te deseamos mucho éxito en tus futuros proyectos!",
         img: "/imgsContacts/504081956_17873026191361415_4733661700109419317_n.jpg",
     },
     {
+        id: "fernando-1",
         name: "Fernando Luján",
         username: "@fernandolujan",
         body: "Qué bueno ver cómo va tomando forma el proyecto!",
         img: "/imgsContacts/1516489653690.jpg",
     },
     {
+        id: "devlights-1",
         name: "Devlights",
         username: "@devlights",
         body: "Gracias Santiago por ser parte de HackIAthon 🙌 El proyecto y la experiencia que se llevan son un gran logro🚀",
         img: "/imgsContacts/devlights_logo.jpg",
     },
     {
+        id: "nicolas-1",
         name: "Nicolás Ariel Sena",
         username: "@nicolasarenasena",
         body: "Que buena página, se ve re linda y vuela, tanto en móvil como desktop. Felicidades!",
         img: "/imgsContacts/1732229843063.jpg",
     },
     {
+        id: "fernando-2",
         name: "Fernando Luján",
         username: "@fernandolujan",
         body: "¡Excelente desarrollo Santi! Es un placer observar el progreso que has demostrado hasta ahora. Me complace enormemente ser testigo de tus logros y la dedicación que has invertido. Seguí por este camino que los resultados hablan por sí solos. Tus esfuerzos y dedicación son verdaderamente ejemplares. Seguí adelante con esta misma energía y determinación, el éxito te espera. ¡Muchas felicitaciones por este gran avance!",
         img: "/imgsContacts/1516489653690.jpg",
     },
     {
+        id: "sherpa-1",
         name: "Sherpa.wtf",
         username: "@sherpa.wtf",
         body: "¡Nos emociona que hayas participado en la prueba técnica y que estés orgulloso del resultado que lograste, Santi! 🎉💻\nEstaremos en contacto contigo. ¡Un saludo y a seguir programando! 🚀😊",
         img: "/imgsContacts/1732818756735.jpg",
     },
     {
+        id: "fernando-3",
         name: "Fernando Luján",
         username: "@fernandolujan",
         body: "Qué bueno ver en qué se convirtió un simple ejercicio práctico! Muy bien hecho! Te felicito!!!",
         img: "/imgsContacts/1516489653690.jpg",
     },
     {
+        id: "gabriel-1",
         name: "Gabriel Bergese",
         username: "@gabrielbergese",
         body: "Interesante proyecto! Gracias",
         img: "/imgsContacts/1730812644444.jpg",
     },
     {
+        id: "devlights-2",
         name: "Devlights",
         username: "@devlights",
         body: "Qué bueno verte compartiendo tu experiencia Santiago🎉 Ha sido un placer acompañarte en este proceso y ver cómo tu dedicación y esfuerzo se reflejaron en cada paso del Bootcamp. Estamos seguros de que este es solo el comienzo de un camino lleno de éxitos. 🚀 ¡Felicitaciones!",
         img: "/imgsContacts/devlights_logo.jpg",
     },
     {
+        id: "fernando-4",
         name: "Fernando Luján",
         username: "@fernandolujan",
         body: "Tuve el privilegio de ser instructor de Santiago en nuestra reciente bootcamp de .NET y me gustaría destacar su excelente desempeño. Desde el inicio, demostró un profundo entendimiento de los conceptos y una gran capacidad para aplicarlos en la práctica. Su dedicación y pasión por el desarrollo fueron evidentes a lo largo del curso. Lo más impresionante fue su trabajo final, donde decidió ir más allá de lo aprendido en clase e implementó SignalR, una tecnología avanzada que no habíamos cubierto. Esta iniciativa no solo muestra su compromiso con el aprendizaje continuo, sino también su habilidad para enfrentar y resolver desafíos por cuenta propia. Estoy seguro de que Santiago tiene un futuro brillante en el mundo del desarrollo de software, y recomiendo encarecidamente a cualquier equipo que esté buscando un desarrollador talentoso e innovador que lo considere. ¡Felicitaciones, Santiago, por tu extraordinario trabajo y tus logros!",
         img: "/imgsContacts/1516489653690.jpg",
     },
     {
+        id: "devlights-3",
         name: "Devlights",
         username: "@devlights",
         body: "¡Felicitaciones, Santiago! 🎉 Tu dedicación y esfuerzo brillaron durante el Bootcamp 3.0, y DevNet es un gran ejemplo de lo que se puede lograr trabajando en equipo. Estamos orgullosos de haber sido parte de tu crecimiento profesional. ¡A seguir alcanzando nuevas metas! 💪💻",
         img: "/imgsContacts/devlights_logo.jpg",
     },
     {
+        id: "devlights-4",
         name: "Devlights",
         username: "@devlights",
         body: "¡Gracias Santiago por tus palabras! Estamos muy felices y orgullosos de cada uno que forma parte del Bootcamp 3.0❤️🚀",
@@ -158,12 +170,12 @@ function Contact() {
         <section id="contact" className="relative flex w-full flex-col items-center justify-center overflow-hidden">
             <Marquee pauseOnHover className="[--duration:20s]">
                 {firstRow.map((review) => (
-                    <ReviewCard key={review.username} {...review} />
+                    <ReviewCard key={review.id} {...review} />
                 ))}
             </Marquee>
             <Marquee reverse pauseOnHover className="[--duration:20s]">
                 {secondRow.map((review) => (
-                    <ReviewCard key={review.username} {...review} />
+                    <ReviewCard key={review.id} {...review} />
                 ))}
             </Marquee>
 

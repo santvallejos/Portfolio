@@ -72,6 +72,14 @@ const TAGS: Record<string, TagConfig> = {
     description: "Entorno de ejecución de JavaScript",
     category: "backend"
   },
+  EXPRESS: {
+    name: "Express",
+    icon: nodejs, // Usamos el mismo icono de Node.js por ahora
+    color: "#000000",
+    class: "bg-black/10 text-black border-black/20 dark:bg-white/10 dark:text-white dark:border-white/20",
+    description: "Framework web minimalista para Node.js",
+    category: "backend"
+  },
   LARAVEL: {
     name: "Laravel",
     icon: laravel,

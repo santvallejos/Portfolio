@@ -91,7 +91,7 @@ function Trajectory() {
     }
 
     return (
-        <section id="experience"  className="py-20 bg-black text-white">
+        <section id="experience"  className="py-20 bg-black dark:bg-white text-white dark:text-black">
             <div className="container mx-auto px-4 max-w-6xl">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-20">
@@ -101,10 +101,10 @@ function Trajectory() {
                         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        Selected Work
+                        Mi Trayectoria
                     </motion.h2>
                     <motion.span
-                        className="text-lg text-zinc-400 hidden md:block"
+                        className="text-lg text-zinc-400 dark:text-zinc-600 hidden md:block"
                         initial={{ opacity: 0 }}
                         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
@@ -118,14 +118,14 @@ function Trajectory() {
                     {timelineItems.map((item, index) => (
                         <motion.div
                             key={index}
-                            className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start border-b border-gray-400 pb-3"
+                            className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start border-b border-gray-400 dark:border-gray-600 pb-3"
                             initial={{ opacity: 0, y: 40 }}
                             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
                             transition={{ duration: 0.8, delay: index * 0.2 }}
                         >
                             {/* Year - Left column on desktop, top on mobile */}
                             <div className="md:col-span-2">
-                                <span className="text-3xl md:text-4xl font-light text-zinc-400">
+                                <span className="text-3xl md:text-4xl font-light text-zinc-400 dark:text-zinc-600">
                                     {item.year}
                                 </span>
                             </div>
@@ -153,7 +153,7 @@ function Trajectory() {
                                                 )}
                                             </div>
                                         </div>
-                                        <p className="text-lg text-zinc-400 mb-4">
+                                        <p className="text-lg text-zinc-400 dark:text-zinc-600 mb-4">
                                             {item.company || item.institution}
                                         </p>
                                     </div>
@@ -164,14 +164,14 @@ function Trajectory() {
                                             {item.certificateUrl ? (
                                                 <Dialog>
                                                     <DialogTrigger asChild>
-                                                        <button className="flex items-center gap-2 bg-zinc-800/50 hover:bg-zinc-700/50 border border-zinc-700 hover:border-zinc-600 text-zinc-300 hover:text-white px-4 py-2 rounded-lg transition-all duration-200 text-sm">
+                                                        <button className="flex items-center gap-2 bg-zinc-800/50 hover:bg-zinc-700/50 dark:bg-zinc-200/50 dark:hover:bg-zinc-300/50 border border-zinc-700 hover:border-zinc-600 dark:border-zinc-300 dark:hover:border-zinc-400 text-zinc-300 hover:text-white dark:text-zinc-700 dark:hover:text-black px-4 py-2 rounded-lg transition-all duration-200 text-sm">
                                                             <Award size={16} />
                                                             <span>{item.actionLabel}</span>
                                                         </button>
                                                     </DialogTrigger>
-                                                    <DialogContent className="max-w-4xl w-full bg-zinc-900 border-zinc-700">
+                                                    <DialogContent className="max-w-4xl w-full bg-zinc-900 dark:bg-zinc-100 border-zinc-700 dark:border-zinc-300">
                                                         <DialogHeader>
-                                                            <DialogTitle className="text-white">Certificado</DialogTitle>
+                                                            <DialogTitle className="text-white dark:text-black">Certificado</DialogTitle>
                                                         </DialogHeader>
                                                         <div className="flex justify-center">
                                                             <Image
@@ -188,7 +188,7 @@ function Trajectory() {
                                             ) : (
                                                 <button
                                                     onClick={() => handleAction(item)}
-                                                    className="flex items-center gap-2 bg-zinc-800/50 hover:bg-zinc-700/50 border border-zinc-700 hover:border-zinc-600 text-zinc-300 hover:text-white px-4 py-2 rounded-lg transition-all duration-200 text-sm"
+                                                    className="flex items-center gap-2 bg-zinc-800/50 hover:bg-zinc-700/50 dark:bg-zinc-200/50 dark:hover:bg-zinc-300/50 border border-zinc-700 hover:border-zinc-600 dark:border-zinc-300 dark:hover:border-zinc-400 text-zinc-300 hover:text-white dark:text-zinc-700 dark:hover:text-black px-4 py-2 rounded-lg transition-all duration-200 text-sm"
                                                 >
                                                     <ExternalLink size={16} />
                                                     <span>{item.actionLabel}</span>
@@ -198,7 +198,7 @@ function Trajectory() {
                                     )}
                                 </div>
 
-                                <p className="text-lg text-zinc-300 leading-relaxed max-w-2xl">
+                                <p className="text-lg text-zinc-300 dark:text-zinc-700 leading-relaxed max-w-2xl">
                                     {item.description}
                                 </p>
 

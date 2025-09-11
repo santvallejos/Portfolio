@@ -21,14 +21,14 @@ export const PROJECTS: Project[] = [
         id: 'dev-space',
         title: "DevSpace",
         description: "DevSpace es un aplicación que permite centralizar y gestionar tus recursos, tales como: links, textos/notas y líneas de código. Contiene una API que interactúa con la base de datos del usuario y un dashboard para navegar dentro de la unidad de la base de datos.",
-        tags: [TAGS.DOTNET, TAGS.MONGODB, TAGS.REACT, TAGS.TAILWIND],
+        tags: [TAGS.DOTNET, TAGS.MONGODB, TAGS.REACT, TAGS.TAILWIND, TAGS.POSTMAN],
         links: {
             github: "https://github.com/santvallejos/DevSpace-App",
             web: "https://devspace-website.vercel.app/"
         },
         media: {
             type: 'image',
-            src: "/projects/961_1x_shots_so.png"
+            src: "/projects/961_1x_shots_so.jpg"
         }
     },
         {
@@ -42,14 +42,14 @@ export const PROJECTS: Project[] = [
         },
         media: {
             type: 'image',
-            src: "/projects/651_1x_shots_so.png"
+            src: "/projects/651_1x_shots_so.jpg"
         }
     },
     {
         id: 'calendar-events',
         title: "Calendar Of Events",
         description: "Permite administrar eventos o recordatorios dentro de un calendario, tiene la función de mostrar, crear, actualizar y eliminar eventos de forma sencilla que a su vez a través de SignalR nos avisa cuando un evento ha iniciado.",
-        tags: [TAGS.DOTNET, TAGS.CSHARP, TAGS.SQLSERVER, TAGS.ANGULAR, TAGS.BOOTSTRAP],
+        tags: [TAGS.DOTNET, TAGS.CSHARP, TAGS.SQLSERVER, TAGS.DOCKER ,TAGS.ANGULAR, TAGS.BOOTSTRAP],
         links: {
             githubBackend: "https://github.com/santvallejos/calendar-events-backend",
             githubFrontend: "https://github.com/santvallejos/calendar-events-frontend",
@@ -78,7 +78,7 @@ export const PROJECTS: Project[] = [
         id: 'virtualtome',
         title: "VirtualTome",
         description: "Este proyecto es una biblioteca virtual donde puedes administrar una lista de libros, estos poseen: nombre, autor, categoría, url de imagen, fecha de publicación y su ISBN. Cumple las funciones básicas de un CRUD que son: listar, añadir, actualizar y eliminar un libro.",
-        tags: [TAGS.NODEJS, TAGS.EXPRESS, TAGS.REACT, TAGS.MYSQL, TAGS.CSS],
+        tags: [TAGS.NODEJS, TAGS.EXPRESS, TAGS.REACT, TAGS.MYSQL, TAGS.CSS, TAGS.POSTMAN],
         links: {
             githubBackend: "https://github.com/santvallejos/virtualtome-backend",
             githubFrontend: "https://github.com/santvallejos/virtualtome-frontend",

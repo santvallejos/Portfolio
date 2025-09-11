@@ -104,11 +104,6 @@ const VideoPlayer = memo(({ src, title }: VideoPlayerProps) => {
             <div className="absolute top-2 left-2 bg-black/70 text-white px-2 py-1 rounded text-xs font-medium">
                 VIDEO
             </div>
-
-            {/* Texto de acción */}
-            <div className="absolute bottom-2 right-2 bg-black/70 text-white px-2 py-1 rounded text-xs">
-                Ver video
-            </div>
         </motion.div>
     );
 });

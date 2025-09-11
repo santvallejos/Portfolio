@@ -1,31 +1,31 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { useRef } from "react"
-import { useInView } from "framer-motion"
-import { ExternalLink, Award, GraduationCap, Briefcase } from "lucide-react"
-import Image from "next/image"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog"
-import TAGS from "../tags"
-import TechTag from "../ui/TechTag"
-import { TagConfig } from "../../types/TagConfig"
+import { motion } from "framer-motion";
+import { useRef } from "react";
+import { useInView } from "framer-motion";
+import { ExternalLink, Award, GraduationCap, Briefcase } from "lucide-react";
+import Image from "next/image";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
+import TAGS from "../tags";
+import TechTag from "../ui/TechTag";
+import { TagConfig } from "../../types/TagConfig";
 
 type TimelineItem = {
-    year: string
-    title: string
-    company?: string
-    institution?: string
-    description: string
-    technologies?: (string | TagConfig)[]
-    type: 'work' | 'education'
-    certificateUrl?: string
-    projectUrl?: string
-    actionLabel?: string
-}
+    year: string;
+    title: string;
+    company?: string;
+    institution?: string;
+    description: string;
+    technologies?: (string | TagConfig)[];
+    type: 'work' | 'education';
+    certificateUrl?: string;
+    projectUrl?: string;
+    actionLabel?: string;
+};
 
 function Trajectory() {
-    const sectionRef = useRef(null)
-    const isInView = useInView(sectionRef, { once: true, amount: 0.1 })
+    const sectionRef = useRef(null);
+    const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
     const timelineItems: TimelineItem[] = [
         {
@@ -132,7 +132,7 @@ function Trajectory() {
 
                             {/* Content - Right column on desktop, bottom on mobile */}
                             <div className="md:col-span-10 space-y-4">
-                                <div className="flex items-start justify-between">
+                                <div className="lg:flex lg:items-start lg:justify-between">
                                     <div className="flex-1">
                                         <div className="flex items-center gap-3 mb-2">
                                             <h3 className="text-2xl md:text-3xl font-light">

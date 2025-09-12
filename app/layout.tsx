@@ -18,8 +18,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio 2.0",
-  description: "Portfolio 2.0",
+  title: "Santvallejos",
+  description: "Portfolio de Santiago Vallejos - Desarrollador Full Stack",
 };
 
 export default function RootLayout({

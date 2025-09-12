@@ -2,7 +2,7 @@
 "use client";
 
 import React from "react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 
@@ -28,16 +28,27 @@ const Icons = {
 export default function Hero() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const { theme } = useTheme();
+    const [mounted, setMounted] = useState(false);
+
+    // Asegurar que el componente esté montado antes de renderizar las partículas
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
-        if (!canvasRef.current) return;
+        if (!canvasRef.current || !mounted) return;
 
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        // Función para redimensionar el canvas
+        const resizeCanvas = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        };
+
+        resizeCanvas();
 
         const particles: Particle[] = [];
         const particleCount = 200;
@@ -69,8 +80,9 @@ export default function Hero() {
 
             draw() {
                 if (!ctx) return;
-                // Color de partículas basado en el tema
-                const particleColor = theme === 'dark' ? "rgba(255, 255, 255, 0.5)" : "rgba(0, 0, 0, 0.5)";
+                // Usar un valor por defecto si theme es undefined
+                const currentTheme = theme || 'light';
+                const particleColor = currentTheme === 'dark' ? "rgba(255, 255, 255, 0.5)" : "rgba(0, 0, 0, 0.5)";
                 ctx.fillStyle = particleColor;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -78,12 +90,15 @@ export default function Hero() {
             }
         }
 
+        // Inicializar partículas
         for (let i = 0; i < particleCount; i++) {
             particles.push(new Particle());
         }
 
+        let animationId: number;
+
         function animate() {
-            if (!ctx) return;
+            if (!ctx || !canvas) return;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             for (const particle of particles) {
@@ -91,26 +106,89 @@ export default function Hero() {
                 particle.draw();
             }
 
-            requestAnimationFrame(animate);
+            animationId = requestAnimationFrame(animate);
         }
 
         animate();
 
         const handleResize = () => {
-            if (!canvasRef.current) return;
-            canvasRef.current.width = window.innerWidth;
-            canvasRef.current.height = window.innerHeight;
+            resizeCanvas();
+            // Reinicializar partículas con nuevas dimensiones
+            particles.length = 0;
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
         };
 
         window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-    }, [theme]);
+        
+        return () => {
+            window.removeEventListener("resize", handleResize);
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+        };
+    }, [theme, mounted]);
+
+    if (!mounted) {
+        return (
+            <div className="relative h-screen w-full overflow-hidden">
+                <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center">
+                    <motion.h1
+                        className="mb-6 text-6xl font-bold tracking-tighter sm:text-7xl lg:text-8xl text-black dark:text-white great-vibes-regular"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        Santiago Vallejos
+                    </motion.h1>
+                    <motion.p
+                        className="max-w-[600px] text-lg text-gray-600 dark:text-gray-400 sm:text-xl"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                    >
+                        Full Stack Developer
+                    </motion.p>
+                    <motion.div
+                        className="max-w-[600px] text-lg text-gray-600 dark:text-gray-400 sm:text-xl"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                    >
+                        <Dock direction="middle">
+                            <DockIcon>
+                                <a href="https://github.com/santvallejos" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                                    <Icons.gitHub />
+                                </a>
+                            </DockIcon>
+                            <DockIcon>
+                                <a href="https://www.linkedin.com/in/santiago-vallejos-97a933236/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                    <Icons.linkdInd  />
+                                </a>
+                            </DockIcon>
+                            <DockIcon>
+                                <a href="mailto:vallejossantiago1412@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
+                                    <Icons.email />
+                                </a>
+                            </DockIcon>
+                            <DockIcon>
+                                <a href="/SantiagoVallejosCV.pdf" download="SantiagoVallejosCV.pdf" target="_blank" rel="noopener noreferrer" aria-label="Download CV">
+                                    <Icons.cv />
+                                </a>
+                            </DockIcon>
+                        </Dock>
+                    </motion.div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="relative h-screen w-full overflow-hidden">
             <canvas
                 ref={canvasRef}
-                className="absolute inset-0 h-full w-full "
+                className="absolute inset-0 h-full w-full"
             />
             <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center">
                 <motion.h1
@@ -153,7 +231,7 @@ export default function Hero() {
                         </DockIcon>
                         <DockIcon>
                             {/* Necesito que pueda descargar el cv que tengo en la carpeta public */}
-                            <a href="/Santiago_Vallejos_CV.pdf" download target="_blank" rel="noopener noreferrer" aria-label="Download CV">
+                            <a href="/SantiagoVallejosCV.pdf" download="SantiagoVallejosCV.pdf" target="_blank" rel="noopener noreferrer" aria-label="Download CV">
                                 <Icons.cv />
                             </a>
                         </DockIcon>

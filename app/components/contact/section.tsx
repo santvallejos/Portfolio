@@ -227,8 +227,8 @@ function Contact() {
 
                         {/* Botón de CV */}
                         <a
-                            href="/cv_santiago_vallejos.pdf"
-                            download
+                            href="/SantiagoVallejosCV.pdf"
+                            download="SantiagoVallejosCV.pdf"
                             className="group relative inline-flex items-center justify-center px-8 py-3 text-sm font-medium text-white bg-gray-900 dark:bg-gray-100 dark:text-gray-900 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95"
                         >
                             <span className="mr-2">Descargar CV</span>

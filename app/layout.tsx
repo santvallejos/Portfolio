@@ -31,8 +31,8 @@ export default function RootLayout({
     <html lang="es" suppressHydrationWarning
     >
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        style={{ margin: 0, overflowX: "hidden", position: "relative" }}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
+        style={{ margin: 0, position: "relative" }}
         suppressHydrationWarning
       >
         <ThemeProvider
@@ -42,7 +42,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          {children}
+          <main className="overflow-x-hidden">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>

@@ -177,3 +177,29 @@
   font-weight: 400;
   font-style: normal;
 }
+
+/* Prevenir scroll horizontal */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Asegurar que los elementos con width: 100vw no causen overflow */
+.w-screen, .min-w-screen {
+  width: 100%;
+  min-width: 100%;
+}
+
+/* Ajustes específicos para elementos que podrían causar overflow */
+canvas {
+  max-width: 100vw;
+}
+
+/* Prevenir que elementos con posición fixed causen overflow */
+.fixed {
+  max-width: 100vw;
+}

@@ -9,12 +9,12 @@ import Contact from "./components/contact/section";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white overflow-x-hidden">
       <Hero />
       <AboutMe/>
       <Trajectory/>
       <Projects/>
       <Contact/>
-    </main>
+    </div>
   );
 }

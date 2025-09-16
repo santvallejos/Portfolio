@@ -169,7 +169,7 @@ function Trajectory() {
                                                             <span>{item.actionLabel}</span>
                                                         </button>
                                                     </DialogTrigger>
-                                                    <DialogContent className="max-w-4xl w-auto bg-zinc-900 dark:bg-zinc-100 border-zinc-700 dark:border-zinc-300">
+                                                    <DialogContent className="max-w-4xl w-full lg:w-auto bg-zinc-900 dark:bg-zinc-100 border-zinc-700 dark:border-zinc-300">
                                                         <DialogHeader>
                                                             <DialogTitle className="text-white dark:text-black">Certificado</DialogTitle>
                                                         </DialogHeader>

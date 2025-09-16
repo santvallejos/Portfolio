@@ -143,7 +143,7 @@ const ReviewCard = ({
                     </blockquote>
                 </figure>
             </DialogTrigger>
-            <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+            <DialogContent className="w-full lg:w-auto max-w-2xl max-h-[80vh] overflow-y-auto">
                 <DialogHeader>
                     <div className="flex items-center gap-3 mb-4">
                         <img className="rounded-full" width="48" height="48" alt="" src={img} />

@@ -1,14 +1,15 @@
 "use client"
 
 import { motion } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useInView } from "framer-motion";
-import { ExternalLink, Award, GraduationCap, Briefcase } from "lucide-react";
+import { ExternalLink, Award, GraduationCap, Briefcase, FileText } from "lucide-react";
 import Image from "next/image";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 import TAGS from "../tags";
 import TechTag from "../ui/TechTag";
 import { TagConfig } from "../../types/TagConfig";
+import { CertificateGallery } from "./CertificateGallery";
 
 type TimelineItem = {
     year: string;
@@ -23,9 +24,15 @@ type TimelineItem = {
     actionLabel?: string;
 };
 
+type Certificate = {
+    id: string;
+    imageUrl: string;
+};
+
 function Trajectory() {
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+    const [activeTab, setActiveTab] = useState<'trajectory' | 'certificates'>('trajectory');
 
     const timelineItems: TimelineItem[] = [
         {
@@ -82,7 +89,26 @@ function Trajectory() {
             projectUrl: "https://insidedarkstudio.com",
             actionLabel: "Ver Empresa"
         }
-    ]
+    ];
+
+    const certificates: Certificate[] = [
+        {
+            id: "talentos-digitales",
+            imageUrl: "/certification/CertificadoTalentosDigitales.png"
+        },
+        {
+            id: "devlights",
+            imageUrl: "/certification/CertificadoDevlights.jpg"
+        },
+        {
+            id: "coder-house",
+            imageUrl: "/certification/CertificadoCoderHouse.jpg"
+        },
+        {
+            id: "datacamp-docker",
+            imageUrl: "/certification/CertificadoDataCampDocker.jpg"
+        }
+    ];
 
     const handleAction = (item: TimelineItem) => {
         if (item.projectUrl) {
@@ -91,131 +117,182 @@ function Trajectory() {
     }
 
     return (
-        <section id="experience"  className="py-20 bg-black dark:bg-white text-white dark:text-black">
+        <section id="experience" className="py-20 bg-black dark:bg-white text-white dark:text-black">
             <div className="container mx-auto px-4 max-w-6xl">
-                {/* Header */}
-                <div className="flex items-center justify-between mb-20">
+                {/* Header with Tabs */}
+                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-16">
                     <motion.h2
-                        className="text-5xl md:text-6xl font-light"
+                        className="text-5xl md:text-6xl font-light mb-8 lg:mb-0 "
                         initial={{ opacity: 0 }}
                         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        Mi Trayectoria
+                        {activeTab === 'trajectory' ? 'Mi Trayectoria' : 'Mis Certificados'}
                     </motion.h2>
-                    <motion.span
-                        className="text-lg text-zinc-400 dark:text-zinc-600 hidden md:block"
-                        initial={{ opacity: 0 }}
-                        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+
+                    {/* Tab Navigation */}
+                    <motion.div 
+                        className="flex justify-center lg:justify-start mb-8 lg:mb-0"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
                     >
-                        2022 — 2025
-                    </motion.span>
+                        <div className="flex bg-zinc-900/50 dark:bg-zinc-100/50 rounded-full p-1.5 border border-zinc-700 dark:border-zinc-300 w-fit">
+                            <button
+                                onClick={() => setActiveTab('trajectory')}
+                                className={`
+                                    flex items-center gap-2 px-8 py-3 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap min-w-[120px] justify-center cursor-pointer
+                                    ${activeTab === 'trajectory'
+                                        ? 'bg-white dark:bg-black text-black dark:text-white shadow-lg'
+                                        : 'text-zinc-400 dark:text-zinc-600 hover:text-white dark:hover:text-black'
+                                    }
+                                `}
+                            >
+                                <Briefcase size={16} />
+                                Trayectoria
+                            </button>
+                            <button
+                                onClick={() => setActiveTab('certificates')}
+                                className={`
+                                    flex items-center gap-2 px-8 py-3 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap min-w-[120px] justify-center cursor-pointer
+                                    ${activeTab === 'certificates'
+                                        ? 'bg-white dark:bg-black text-black dark:text-white shadow-lg'
+                                        : 'text-zinc-400 dark:text-zinc-600 hover:text-white dark:hover:text-black'
+                                    }
+                                `}
+                            >
+                                <Award size={16} />
+                                Certificados
+                            </button>
+                        </div>
+                    </motion.div>
                 </div>
 
-                {/* Timeline Items */}
-                <div ref={sectionRef} className="space-y-20 md:space-y-32">
-                    {timelineItems.map((item, index) => (
+                {/* Content */}
+                <div ref={sectionRef}>
+                    {activeTab === 'trajectory' ? (
                         <motion.div
-                            key={index}
-                            className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start border-b border-gray-400 dark:border-gray-600 pb-3"
-                            initial={{ opacity: 0, y: 40 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-                            transition={{ duration: 0.8, delay: index * 0.2 }}
+                            className="space-y-20 md:space-y-32"
+                            key="trajectory"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.5 }}
                         >
-                            {/* Year - Left column on desktop, top on mobile */}
-                            <div className="md:col-span-2">
-                                <span className="text-3xl md:text-4xl font-light text-zinc-400 dark:text-zinc-600">
-                                    {item.year}
-                                </span>
-                            </div>
-
-                            {/* Content - Right column on desktop, bottom on mobile */}
-                            <div className="md:col-span-10 space-y-4">
-                                <div className="lg:flex lg:items-start lg:justify-between">
-                                    <div className="flex-1">
-                                        <div className="flex items-center gap-3 mb-2">
-                                            <h3 className="text-2xl md:text-3xl font-light">
-                                                {item.title}
-                                            </h3>
-                                            {/* Identificador visual del tipo */}
-                                            <div className="flex items-center gap-1">
-                                                {item.type === 'education' ? (
-                                                    <div className="flex items-center gap-1 bg-blue-500/20 text-blue-400 px-2 py-1 rounded-full text-xs">
-                                                        <GraduationCap size={12} />
-                                                        <span>Educación</span>
-                                                    </div>
-                                                ) : (
-                                                    <div className="flex items-center gap-1 bg-green-500/20 text-green-400 px-2 py-1 rounded-full text-xs">
-                                                        <Briefcase size={12} />
-                                                        <span>Trabajo</span>
-                                                    </div>
-                                                )}
-                                            </div>
-                                        </div>
-                                        <p className="text-lg text-zinc-400 dark:text-zinc-600 mb-4">
-                                            {item.company || item.institution}
-                                        </p>
+                            {timelineItems.map((item, index) => (
+                                <motion.div
+                                    key={index}
+                                    className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start border-b border-gray-400 dark:border-gray-600 pb-3"
+                                    initial={{ opacity: 0, y: 40 }}
+                                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+                                    transition={{ duration: 0.8, delay: index * 0.2 }}
+                                >
+                                    {/* Year - Left column on desktop, top on mobile */}
+                                    <div className="md:col-span-2">
+                                        <span className="text-3xl md:text-4xl font-light text-zinc-400 dark:text-zinc-600">
+                                            {item.year}
+                                        </span>
                                     </div>
-                                    
-                                    {/* Botón de acción */}
-                                    {(item.certificateUrl || item.projectUrl) && (
-                                        <>
-                                            {item.certificateUrl ? (
-                                                <Dialog>
-                                                    <DialogTrigger asChild>
-                                                        <button className="flex items-center gap-2 bg-zinc-800/50 hover:bg-zinc-700/50 dark:bg-zinc-200/50 dark:hover:bg-zinc-300/50 border border-zinc-700 hover:border-zinc-600 dark:border-zinc-300 dark:hover:border-zinc-400 text-zinc-300 hover:text-white dark:text-zinc-700 dark:hover:text-black px-4 py-2 rounded-lg transition-all duration-200 text-sm">
-                                                            <Award size={16} />
+
+                                    {/* Content - Right column on desktop, bottom on mobile */}
+                                    <div className="md:col-span-10 space-y-4">
+                                        <div className="lg:flex lg:items-start lg:justify-between">
+                                            <div className="flex-1">
+                                                <div className="flex items-center gap-3 mb-2">
+                                                    <h3 className="text-2xl md:text-3xl font-light">
+                                                        {item.title}
+                                                    </h3>
+                                                    {/* Identificador visual del tipo */}
+                                                    <div className="flex items-center gap-1">
+                                                        {item.type === 'education' ? (
+                                                            <div className="flex items-center gap-1 bg-blue-500/20 text-blue-400 px-2 py-1 rounded-full text-xs">
+                                                                <GraduationCap size={12} />
+                                                                <span>Educación</span>
+                                                            </div>
+                                                        ) : (
+                                                            <div className="flex items-center gap-1 bg-green-500/20 text-green-400 px-2 py-1 rounded-full text-xs">
+                                                                <Briefcase size={12} />
+                                                                <span>Trabajo</span>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                                <p className="text-lg text-zinc-400 dark:text-zinc-600 mb-4">
+                                                    {item.company || item.institution}
+                                                </p>
+                                            </div>
+
+                                            {/* Botón de acción */}
+                                            {(item.certificateUrl || item.projectUrl) && (
+                                                <>
+                                                    {item.certificateUrl ? (
+                                                        <Dialog>
+                                                            <DialogTrigger asChild>
+                                                                <button className="flex items-center gap-2 bg-zinc-800/50 hover:bg-zinc-700/50 dark:bg-zinc-200/50 dark:hover:bg-zinc-300/50 border border-zinc-700 hover:border-zinc-600 dark:border-zinc-300 dark:hover:border-zinc-400 text-zinc-300 hover:text-white dark:text-zinc-700 dark:hover:text-black px-4 py-2 rounded-lg transition-all duration-200 text-sm">
+                                                                    <Award size={16} />
+                                                                    <span>{item.actionLabel}</span>
+                                                                </button>
+                                                            </DialogTrigger>
+                                                            <DialogContent className="max-w-4xl w-full lg:w-auto bg-zinc-900 dark:bg-zinc-100 border-zinc-700 dark:border-zinc-300">
+                                                                <DialogHeader>
+                                                                    <DialogTitle className="text-white dark:text-black">Certificado</DialogTitle>
+                                                                </DialogHeader>
+                                                                <div className="flex justify-center">
+                                                                    <Image
+                                                                        src={item.certificateUrl}
+                                                                        alt="Certificado"
+                                                                        width={800}
+                                                                        height={600}
+                                                                        className="max-w-full max-h-[70vh] object-contain rounded-lg"
+                                                                        priority
+                                                                    />
+                                                                </div>
+                                                            </DialogContent>
+                                                        </Dialog>
+                                                    ) : (
+                                                        <button
+                                                            onClick={() => handleAction(item)}
+                                                            className="flex items-center gap-2 bg-zinc-800/50 hover:bg-zinc-700/50 dark:bg-zinc-200/50 dark:hover:bg-zinc-300/50 border border-zinc-700 hover:border-zinc-600 dark:border-zinc-300 dark:hover:border-zinc-400 text-zinc-300 hover:text-white dark:text-zinc-700 dark:hover:text-black px-4 py-2 rounded-lg transition-all duration-200 text-sm"
+                                                        >
+                                                            <ExternalLink size={16} />
                                                             <span>{item.actionLabel}</span>
                                                         </button>
-                                                    </DialogTrigger>
-                                                    <DialogContent className="max-w-4xl w-full lg:w-auto bg-zinc-900 dark:bg-zinc-100 border-zinc-700 dark:border-zinc-300">
-                                                        <DialogHeader>
-                                                            <DialogTitle className="text-white dark:text-black">Certificado</DialogTitle>
-                                                        </DialogHeader>
-                                                        <div className="flex justify-center">
-                                                            <Image
-                                                                src={item.certificateUrl}
-                                                                alt="Certificado"
-                                                                width={800}
-                                                                height={600}
-                                                                className="max-w-full max-h-[70vh] object-contain rounded-lg"
-                                                                priority
-                                                            />
-                                                        </div>
-                                                    </DialogContent>
-                                                </Dialog>
-                                            ) : (
-                                                <button
-                                                    onClick={() => handleAction(item)}
-                                                    className="flex items-center gap-2 bg-zinc-800/50 hover:bg-zinc-700/50 dark:bg-zinc-200/50 dark:hover:bg-zinc-300/50 border border-zinc-700 hover:border-zinc-600 dark:border-zinc-300 dark:hover:border-zinc-400 text-zinc-300 hover:text-white dark:text-zinc-700 dark:hover:text-black px-4 py-2 rounded-lg transition-all duration-200 text-sm"
-                                                >
-                                                    <ExternalLink size={16} />
-                                                    <span>{item.actionLabel}</span>
-                                                </button>
+                                                    )}
+                                                </>
                                             )}
-                                        </>
-                                    )}
-                                </div>
+                                        </div>
 
-                                <p className="text-lg text-zinc-300 dark:text-zinc-700 leading-relaxed max-w-2xl">
-                                    {item.description}
-                                </p>
+                                        <p className="text-lg text-zinc-300 dark:text-zinc-700 leading-relaxed max-w-2xl">
+                                            {item.description}
+                                        </p>
 
-                                {/* Technologies - Right aligned on desktop */}
-                                <div className="flex flex-wrap gap-3 justify-start md:justify-end mt-6">
-                                    {item.technologies?.map((tech, techIndex) => (
-                                        <TechTag
-                                            key={techIndex}
-                                            tag={tech}
-                                            size="sm"
-                                            variant="default"
-                                        />
-                                    ))}
-                                </div>
-                            </div>
+                                        {/* Technologies - Right aligned on desktop */}
+                                        <div className="flex flex-wrap gap-3 justify-start md:justify-end mt-6">
+                                            {item.technologies?.map((tech, techIndex) => (
+                                                <TechTag
+                                                    key={techIndex}
+                                                    tag={tech}
+                                                    size="sm"
+                                                    variant="default"
+                                                />
+                                            ))}
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))}
                         </motion.div>
-                    ))}
+                    ) : (
+                        /* Certificate Gallery */
+                        <motion.div
+                            key="certificates"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <CertificateGallery certificates={certificates} />
+                        </motion.div>
+                    )}
                 </div>
             </div>
         </section>

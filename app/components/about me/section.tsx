@@ -51,20 +51,22 @@ export default function AboutMe() {
                         <BlurFade delay={0.3} inView>
                             <h2 className="text-5xl font-bold mb-6 text-white dark:text-black text-end">Sobre mí</h2>
                             <div className="space-y-4">
-                                <p className="text-xl text-white dark:text-black text-end">
-                                    Mi nombre es Santiago Vallejos, tengo más de 2 años de experiencia como
-                                    <span className="text-blue-500 font-medium"> Full Stack Developer</span>,
-                                    me apasiona mucho la tecnología y el desarrollo de software.
+                                <p className="text-2xl text-white dark:text-black text-end">
+                                    Soy <span className="text-blue-500 font-medium">Santiago Vallejos</span>,
+                                    un apasionado del mundo de la tecnología y el desarrollo de software.
                                 </p>
-                                <p className="text-xl text-white dark:text-black text-end">
-                                    Actualmente estudio Licenciatura en Sistemas en la Universidad Nacional del Nordeste.
-                                    Participé en varios programas donde tuve la posibilidad de destacar algunos de
-                                    <span className="text-blue-500"> mis proyectos y trabajar en grupo</span>.
+                                <p className="text-2xl text-white dark:text-black text-end">
+                                    Disfruto mucho aprender cosas nuevas, trabajar en equipo y transformar ideas
+                                    en proyectos que generen un impacto real. Actualmente estudio
+                                    <span className="text-blue-500"> Licenciatura en Sistemas</span> en la
+                                    Universidad Nacional del Nordeste.
                                 </p>
-                                <p className="text-xl text-white dark:text-black text-end">
-                                    <span className="text-blue-500">Mi objetivo</span> es mejorar continuamente en el ámbito
-                                    del desarrollo de software, aplicar mis conocimientos a proyectos reales y contribuir a su éxito.
+                                <p className="text-2xl text-white dark:text-black text-end">
+                                    <span className="text-blue-500">Mi objetivo</span> es seguir creciendo como
+                                    profesional y persona, compartiendo mis conocimientos, enfrentando nuevos retos
+                                    y creando soluciones que aporten valor.
                                 </p>
+
 
                                 {/* GitHub Contributions Chart */}
                                 <div className="flex justify-end mt-8">

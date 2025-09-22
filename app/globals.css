@@ -173,7 +173,7 @@
 }
 
 .great-vibes-regular {
-  font-family: "Great Vibes", cursive;
+  font-family: var(--font-great-vibes), cursive;
   font-weight: 400;
   font-style: normal;
 }

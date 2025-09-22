@@ -49,11 +49,11 @@ function Trajectory() {
             description: "Programa de formación para Full Stack developers, con especialización en PHP (Laravel), MySQL y Vue.JS",
             technologies: [TAGS.PHP, TAGS.LARAVEL, TAGS.CODEIGNITER, TAGS.BOOTSTRAP, TAGS.MYSQL, TAGS.VUE, TAGS.NODEJS, TAGS.JAVASCRIPT],
             type: 'education',
-            certificateUrl: "/certification/CertificadoTalentosDigitales.png",
+            certificateUrl: "/certification/CertificadoTalentosDigitales.jpg",
             actionLabel: "Ver Certificado"
         },
         {
-            year: "2024-2025",
+            year: "2024",
             title: "Full Stack Developer",
             institution: "Bootcamp 3.0 By Devlights",
             description: "Programa de formación para Full Stack developers, con especialización .NET (C#), SQL Server y Angular",
@@ -94,7 +94,7 @@ function Trajectory() {
     const certificates: Certificate[] = [
         {
             id: "talentos-digitales",
-            imageUrl: "/certification/CertificadoTalentosDigitales.png"
+            imageUrl: "/certification/CertificadoTalentosDigitales.jpg"
         },
         {
             id: "devlights",

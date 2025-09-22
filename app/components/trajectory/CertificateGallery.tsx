@@ -1,11 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion";
-import { Award, Calendar, ExternalLink, Eye } from "lucide-react";
-import Image from "next/image";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
-import TechTag from "../ui/TechTag";
-import { TagConfig } from "../../types/TagConfig";
 
 interface CertificateGalleryProps {
     certificates: {

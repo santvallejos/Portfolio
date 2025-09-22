@@ -21,7 +21,6 @@ interface CertificateCardProps {
 }
 
 export function CertificateCard({ 
-  id, 
   title, 
   institution, 
   date, 

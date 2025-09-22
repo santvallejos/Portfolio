@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { useInView } from "framer-motion";
-import { ExternalLink, Award, GraduationCap, Briefcase, FileText } from "lucide-react";
+import { ExternalLink, Award, GraduationCap, Briefcase } from "lucide-react";
 import Image from "next/image";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 import TAGS from "../tags";

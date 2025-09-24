@@ -196,7 +196,7 @@ function Contact() {
                         {/* Redes sociales */}
                         <div className="flex gap-6">
                             <a
-                                href="https://www.linkedin.com/in/santivallejos/"
+                                href="https://www.linkedin.com/in/santiago-vallejos-97a933236/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="LinkedIn"
@@ -217,7 +217,7 @@ function Contact() {
                                 </svg>
                             </a>
                             <a
-                                href="mailto:santivallejos.dev@gmail.com"
+                                href="mailto:vallejossantiago1412@gmail.com"
                                 aria-label="Email"
                                 className="group p-3 rounded-full border border-gray-200 dark:border-gray-700 hover:border-red-500 dark:hover:border-red-400 transition-all duration-300 hover:shadow-lg"
                             >

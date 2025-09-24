@@ -51,17 +51,17 @@ export default function AboutMe() {
                         <BlurFade delay={0.3} inView>
                             <h2 className="text-5xl font-bold mb-6 text-white dark:text-black text-end">Sobre mí</h2>
                             <div className="space-y-4">
-                                <p className="text-2xl text-white dark:text-black text-end">
+                                <p className="text-xl lg:text-2xl text-white dark:text-black text-end">
                                     Soy <span className="text-blue-500 font-medium">Santiago Vallejos</span>,
                                     un apasionado del mundo de la tecnología y el desarrollo de software.
                                 </p>
-                                <p className="text-2xl text-white dark:text-black text-end">
+                                <p className="text-xl lg:text-2xl text-white dark:text-black text-end">
                                     Disfruto mucho aprender cosas nuevas, trabajar en equipo y transformar ideas
                                     en proyectos que generen un impacto real. Actualmente estudio
                                     <span className="text-blue-500"> Licenciatura en Sistemas</span> en la
                                     Universidad Nacional del Nordeste.
                                 </p>
-                                <p className="text-2xl text-white dark:text-black text-end">
+                                <p className="text-xl lg:text-2xl text-white dark:text-black text-end">
                                     <span className="text-blue-500">Mi objetivo</span> es seguir creciendo como
                                     profesional y persona, compartiendo mis conocimientos, enfrentando nuevos retos
                                     y creando soluciones que aporten valor.

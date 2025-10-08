@@ -166,6 +166,10 @@ function Trajectory() {
         {
             id: "datacamp-docker",
             imageUrl: "/certification/CertificadoDataCampDocker.jpg"
+        },
+        {
+            id: "datacamp-aws",
+            imageUrl: "/certification/CertificadoDataCampAWS.jpg"
         }
     ];
 

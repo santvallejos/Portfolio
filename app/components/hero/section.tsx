@@ -68,7 +68,7 @@ export default function Hero() {
                             </a>
                         </DockIcon>
                         <DockIcon>
-                            <a href="https://www.linkedin.com/in/santiago-vallejos-97a933236/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <a href="https://www.linkedin.com/in/santiago-maximiliano-vallejos/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                                 <Icons.linkdInd  />
                             </a>
                         </DockIcon>

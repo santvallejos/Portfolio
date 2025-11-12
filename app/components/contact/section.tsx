@@ -196,7 +196,7 @@ function Contact() {
                         {/* Redes sociales */}
                         <div className="flex gap-6">
                             <a
-                                href="https://www.linkedin.com/in/santiago-vallejos-97a933236/"
+                                href="https://www.linkedin.com/in/santiago-maximiliano-vallejos/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="LinkedIn"

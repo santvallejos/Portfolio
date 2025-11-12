@@ -78,7 +78,7 @@ export default function Hero() {
                             </a>
                         </DockIcon>
                         <DockIcon>
-                            <a href="/SantiagoVallejosCV.pdf" download target="_blank" rel="noopener noreferrer" aria-label="Download CV">
+                            <a href="/CV Santiago Maximiliano Vallejos - Software Developer 2025.pdf" download target="_blank" rel="noopener noreferrer" aria-label="Download CV">
                                 <Icons.cv />
                             </a>
                         </DockIcon>

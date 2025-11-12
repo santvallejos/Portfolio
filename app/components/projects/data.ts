@@ -48,7 +48,7 @@ export const PROJECTS: Project[] = [
     {
         id: 'calendar-events',
         title: "Calendar Of Events",
-        description: "Permite administrar eventos o recordatorios dentro de un calendario, tiene la función de mostrar, crear, actualizar y eliminar eventos de forma sencilla que a su vez a través de SignalR nos avisa cuando un evento ha iniciado.",
+        description: "Permite administrar eventos o recordatorios dentro de un calendario, tiene la función de mostrar, crear, actualizar y eliminar eventos de forma sencilla, además de enviar notificaciones en tiempo real con SignalR.",
         tags: [TAGS.DOTNET, TAGS.CSHARP, TAGS.SQLSERVER, TAGS.DOCKER ,TAGS.ANGULAR, TAGS.BOOTSTRAP],
         links: {
             githubBackend: "https://github.com/santvallejos/calendar-events-backend",

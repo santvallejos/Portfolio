@@ -227,8 +227,8 @@ function Contact() {
 
                         {/* Botón de CV */}
                         <a
-                            href="/SantiagoVallejosCV.pdf"
-                            download="SantiagoVallejosCV.pdf"
+                            href="/CV Santiago Maximiliano Vallejos - Software Developer 2025.pdf"
+                            download="CV Santiago Maximiliano Vallejos - Software Developer 2025.pdf"
                             className="group relative inline-flex items-center justify-center px-8 py-3 text-sm font-medium text-white bg-gray-900 dark:bg-gray-100 dark:text-gray-900 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95"
                         >
                             <span className="mr-2">Descargar CV</span>

@@ -31,14 +31,13 @@ export const PROJECTS: Project[] = [
             src: "/projects/961_1x_shots_so.jpg"
         }
     },
-        {
+    {
         id: 'aguarago',
         title: "AguaraGo",
         description: "AguaraGo es una asistente virtual que se realizado en la jornada de la HackIAthon by Devlights con el fin de ayudar al turismo en el NEA (Nordeste Argentino). Permite a los usuarios obtener información sobre destinos turísticos, actividades, alojamientos y gastronomía en la región del NEA.",
         tags: [TAGS.NEXTJS, TAGS.TAILWIND, TAGS.LANGCHAIN, TAGS.JAVASCRIPT, TAGS.GEMINI],
         links: {
-            github: "https://github.com/santvallejos/AguaraGo",
-            web: "https://aguarago.vercel.app/"
+            github: "https://github.com/santvallejos/AguaraGo"
         },
         media: {
             type: 'image',

@@ -6,10 +6,12 @@ const media = [
     { type: "image", url: "/about me/2.jpg" },
     { type: "image", url: "/about me/3.jpg" },
     { type: "image", url: "/about me/5.jpg" },
-    { type: "video", url: "/about me/4.mp4" },
+    { type: "image", url: "/about me/12.jpg" },
     { type: "image", url: "/about me/6.jpg" },
     { type: "image", url: "/about me/7.jpg" },
     { type: "image", url: "/about me/8.jpg" },
+    { type: "image", url: "/about me/11.jpg" },
+    { type: "video", url: "/about me/4.mp4" },
     { type: "image", url: "/about me/9.jpg" },
     { type: "image", url: "/about me/10.jpg" },
 ];
@@ -74,7 +76,7 @@ export default function AboutMe() {
                                         <img
                                             src="https://ghchart.rshah.org/409ba5/santvallejos"
                                             alt="GitHub chart de contribuciones"
-                                            className="rounded-md w-full max-w-md"
+                                            className="rounded-md w-full h-full"
                                         />
                                     </div>
                                 </div>

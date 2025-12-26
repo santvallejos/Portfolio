@@ -2,18 +2,18 @@ import { BlurFade } from "../magicui/blur-fade";
 
 // Media assets for the About Me section
 const media = [
-    { type: "image", url: "/about me/1.jpg" },
-    { type: "image", url: "/about me/2.jpg" },
-    { type: "image", url: "/about me/3.jpg" },
-    { type: "image", url: "/about me/5.jpg" },
-    { type: "image", url: "/about me/12.jpg" },
-    { type: "image", url: "/about me/6.jpg" },
-    { type: "image", url: "/about me/7.jpg" },
-    { type: "image", url: "/about me/8.jpg" },
-    { type: "image", url: "/about me/11.jpg" },
-    { type: "video", url: "/about me/4.mp4" },
-    { type: "image", url: "/about me/9.jpg" },
-    { type: "image", url: "/about me/10.jpg" },
+    { type: "image", url: "/aboutme/1.jpg" },
+    { type: "image", url: "/aboutme/2.jpg" },
+    { type: "image", url: "/aboutme/3.jpg" },
+    { type: "image", url: "/aboutme/5.jpg" },
+    { type: "image", url: "/aboutme/12.jpg" },
+    { type: "image", url: "/aboutme/6.jpg" },
+    { type: "image", url: "/aboutme/7.jpg" },
+    { type: "image", url: "/aboutme/8.jpg" },
+    { type: "image", url: "/aboutme/11.jpg" },
+    { type: "video", url: "/aboutme/4.mp4" },
+    { type: "image", url: "/aboutme/9.jpg" },
+    { type: "image", url: "/aboutme/10.jpg" },
 ];
 
 export default function AboutMe() {

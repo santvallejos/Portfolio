@@ -7,6 +7,7 @@ import ParticleCanvas from "./ParticleCanvas";
 
 //Magic UI
 import { Dock, DockIcon } from "../magicui/dock";
+import { label } from "framer-motion/client";
 export type IconProps = React.HTMLAttributes<SVGElement>;
 
 const Icons = {
@@ -24,6 +25,35 @@ const Icons = {
     ),
 };
 
+// Social Icons to mappear
+const SocialIcons = [
+    {
+        name: "GitHub",
+        link: "https://github.com/santvallejos",
+        label: "GitHub",
+        icon: Icons.gitHub
+    },
+    {
+        name: "LinkedIn",
+        link: "https://www.linkedin.com/in/santiago-maximiliano-vallejos/",
+        label: "LinkedIn",
+        icon: Icons.linkdInd
+    },
+    {
+        name: "Email",
+        link: "mailto:vallejossantiago1412@gmail.com",
+        label: "Email",
+        icon: Icons.email
+    },
+    {
+        name: "Download CV",
+        link: "/CV Santiago Maximiliano Vallejos - Software Developer 2025.pdf",
+        label: "Download CV",
+        dowload: true,
+        icon: Icons.cv
+    }
+];
+
 export default function Hero() {
     const [mounted, setMounted] = useState(false);
 
@@ -37,8 +67,10 @@ export default function Hero() {
 
     return (
         <div className="relative h-screen w-full overflow-hidden">
-            <ParticleCanvas className="absolute inset-0 h-full w-full" />
+            <ParticleCanvas className="absolute inset-0 h-full w-full" /> {/* Background particles */}
+
             <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center">
+                {/* Title */}
                 <motion.h1
                     className="mb-6 text-6xl font-bold tracking-tighter sm:text-7xl lg:text-8xl text-black dark:text-white great-vibes-regular"
                     initial={{ opacity: 0, y: 20 }}
@@ -47,6 +79,8 @@ export default function Hero() {
                 >
                     Santiago Vallejos
                 </motion.h1>
+
+                {/* Subtitle */}
                 <motion.p
                     className="max-w-[600px] text-lg text-gray-600 dark:text-gray-400 sm:text-xl"
                     initial={{ opacity: 0, y: 20 }}
@@ -55,6 +89,8 @@ export default function Hero() {
                 >
                     Full Stack Developer
                 </motion.p>
+
+                {/* Social Icons Dock */}
                 <motion.div
                     className="max-w-[600px] text-lg text-gray-600 dark:text-gray-400 sm:text-xl"
                     initial={{ opacity: 0, y: 20 }}
@@ -62,26 +98,13 @@ export default function Hero() {
                     transition={{ duration: 0.8, delay: 0.4 }}
                 >
                     <Dock direction="middle">
-                        <DockIcon>
-                            <a href="https://github.com/santvallejos" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                                <Icons.gitHub />
-                            </a>
-                        </DockIcon>
-                        <DockIcon>
-                            <a href="https://www.linkedin.com/in/santiago-maximiliano-vallejos/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                                <Icons.linkdInd  />
-                            </a>
-                        </DockIcon>
-                        <DockIcon>
-                            <a href="mailto:vallejossantiago1412@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
-                                <Icons.email />
-                            </a>
-                        </DockIcon>
-                        <DockIcon>
-                            <a href="/CV Santiago Maximiliano Vallejos - Software Developer 2025.pdf" download target="_blank" rel="noopener noreferrer" aria-label="Download CV">
-                                <Icons.cv />
-                            </a>
-                        </DockIcon>
+                        {SocialIcons.map((icon) => (
+                            <DockIcon key={icon.name}>
+                                <a href={icon.link} target="_blank" rel="noopener noreferrer" aria-label={icon.label} download={icon.dowload ? true : false}>
+                                    <icon.icon />
+                                </a>
+                            </DockIcon>
+                        ))}
                     </Dock>
                 </motion.div>
             </div>

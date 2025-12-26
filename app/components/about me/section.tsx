@@ -1,6 +1,6 @@
 import { BlurFade } from "../magicui/blur-fade";
 
-// Definir las rutas de los medios (imágenes y video)
+// Media assets for the About Me section
 const media = [
     { type: "image", url: "/about me/1.jpg" },
     { type: "image", url: "/about me/2.jpg" },
@@ -17,9 +17,10 @@ const media = [
 export default function AboutMe() {
     return (
         <section id="about-me" className="py-16 bg-black dark:bg-white">
+
             <div className="container mx-auto px-4">
                 <div className="flex flex-col lg:flex-row gap-8 items-center">
-                    {/* Bento Grid de imágenes y video (lado izquierdo) */}
+                    {/* Bento grid of photos and video (Left) */}
                     <div className="w-full lg:w-1/2">
                         <div className="columns-2 gap-4 sm:columns-3">
                             {media.map((item, idx) => (
@@ -46,7 +47,7 @@ export default function AboutMe() {
                         </div>
                     </div>
 
-                    {/* Información sobre mí (lado derecho) */}
+                    {/* About me information (Right) */}
                     <div className="w-full lg:w-1/2">
                         <BlurFade delay={0.3} inView>
                             <h2 className="text-5xl font-bold mb-6 text-white dark:text-black text-end">Sobre mí</h2>

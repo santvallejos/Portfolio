@@ -11,6 +11,24 @@ import TechTag from "../ui/TechTag";
 import { TagConfig } from "../../types/TagConfig";
 import { CertificateGallery } from "./CertificateGallery";
 
+type TimelineItem = {
+    year: string;
+    title: string;
+    company?: string;
+    institution?: string;
+    description: string;
+    technologies?: (string | TagConfig)[];
+    type: 'work' | 'education';
+    certificateUrl?: string;
+    projectUrl?: string;
+    actionLabel?: string;
+};
+
+type Certificate = {
+    id: string;
+    imageUrl: string;
+};
+
 // Componente para manejar el estado de carga de imágenes de certificados
 function CertificateImageWithLoading({ 
     src, 
@@ -69,24 +87,6 @@ function CertificateImageWithLoading({
         </div>
     );
 }
-
-type TimelineItem = {
-    year: string;
-    title: string;
-    company?: string;
-    institution?: string;
-    description: string;
-    technologies?: (string | TagConfig)[];
-    type: 'work' | 'education';
-    certificateUrl?: string;
-    projectUrl?: string;
-    actionLabel?: string;
-};
-
-type Certificate = {
-    id: string;
-    imageUrl: string;
-};
 
 function Trajectory() {
     const sectionRef = useRef(null);

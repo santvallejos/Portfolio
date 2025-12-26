@@ -69,7 +69,7 @@ const ProjectCard = ({ project, index, selectedTags }: ProjectCardProps) => {
                 >
                     <div>
                         <motion.h3 
-                            className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2"
+                            className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-2"
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             transition={{ duration: 0.6, delay: 0.3 }}

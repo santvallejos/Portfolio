@@ -1,4 +1,4 @@
-// Utilidades para manejo de videos de YouTube
+// Utils for handling YouTube URLs and thumbnails
 export const getYouTubeVideoId = (url: string): string | null => {
     const regex = /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/;
     const match = url.match(regex);
@@ -16,11 +16,11 @@ export const getYouTubeThumbnail = (url: string, quality: 'default' | 'medium' |
         'standard': 'sddefault',
         'maxres': 'maxresdefault'
     };
-    
+
     return `https://img.youtube.com/vi/${videoId}/${qualityMap[quality]}.jpg`;
 };
 
-// Precargar imagen para mejorar la velocidad de carga
+// Preload an image
 export const preloadImage = (src: string): Promise<void> => {
     return new Promise((resolve, reject) => {
         const img = new Image();

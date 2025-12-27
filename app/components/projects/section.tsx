@@ -1,14 +1,14 @@
 "use client"
 
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { PROJECTS } from "./data";
-import { useProjectFilter } from "./useProjectFilter";
+import { motion, AnimatePresence } from "framer-motion"; // For animations
+import { DataProjects } from "./data";
+import { useProjectFilter } from "./Filter";
 import TechnologySelector from "./TechnologySelector";
-import ProjectCard from "./ProjectCard";
+import ProjectCard from "./Card";
 
 function Projects() {
-    const { selectedTags, filteredProjects, handleTagClick, clearFilters, hasActiveFilters } = useProjectFilter(PROJECTS);
+    const { selectedTags, filteredProjects, handleTagClick, clearFilters, hasActiveFilters } = useProjectFilter(DataProjects);
 
     return (
         <section id="projects" className="py-16 px-4 md:px-8 lg:px-12 bg-white dark:bg-black">
@@ -43,7 +43,7 @@ function Projects() {
                             transition={{ duration: 0.3 }}
                         >
                             <p className="text-gray-600 dark:text-gray-400">
-                                Mostrando {filteredProjects.length} de {PROJECTS.length} proyectos
+                                Mostrando {filteredProjects.length} de {DataProjects.length} proyectos
                             </p>
                         </motion.div>
                     )}

@@ -7,7 +7,9 @@ export const useProjectFilter = (projects: Project[]) => {
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects);
 
+    // Handle tag selection/deselection
     const handleTagClick = useCallback((tagName: string) => {
+
         setSelectedTags(prevSelectedTags => {
             if (prevSelectedTags.includes(tagName)) {
                 return prevSelectedTags.filter(tag => tag !== tagName);
@@ -15,8 +17,10 @@ export const useProjectFilter = (projects: Project[]) => {
                 return [...prevSelectedTags, tagName];
             }
         });
+
     }, []);
 
+    // Clear all filters
     const clearFilters = useCallback(() => {
         setSelectedTags([]);
     }, []);
@@ -32,6 +36,7 @@ export const useProjectFilter = (projects: Project[]) => {
         }
     }, [selectedTags, projects]);
 
+    // Determine if any filters are active
     return {
         selectedTags,
         filteredProjects,

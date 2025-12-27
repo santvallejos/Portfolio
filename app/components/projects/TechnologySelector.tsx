@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import TAGS from "../tags"; // Cambiar a usar las tags centralizadas
+import TAGS from "../tags";
 
 interface TechnologySelectorProps {
     selectedTags: string[];
@@ -18,7 +18,7 @@ const TechnologySelector = ({
 }: TechnologySelectorProps) => {
     const [isOpen, setIsOpen] = useState(false);
     
-    // Organizar tecnologías por categorías usando el nuevo sistema
+    // Categorize tags
     const categorizedTags = {
         frontend: Object.values(TAGS).filter(tag => tag.category === 'frontend'),
         backend: Object.values(TAGS).filter(tag => tag.category === 'backend'),

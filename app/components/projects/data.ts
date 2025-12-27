@@ -1,8 +1,8 @@
 import { Project } from '../../types/Project';
-import TAGS from '../tags'; // Cambiar a usar las tags centralizadas
+import TAGS from '../tags';
 
-// Datos de proyectos
-export const PROJECTS: Project[] = [
+// Date of projects
+export const DataProjects: Project[] = [
     {
         id: 'skin',
         title: "Skin",
@@ -31,7 +31,7 @@ export const PROJECTS: Project[] = [
             src: "/projects/961_1x_shots_so.jpg"
         }
     },
-        {
+    {
         id: 'aguarago',
         title: "AguaraGo",
         description: "AguaraGo es una asistente virtual que se realizado en la jornada de la HackIAthon by Devlights con el fin de ayudar al turismo en el NEA (Nordeste Argentino). Permite a los usuarios obtener información sobre destinos turísticos, actividades, alojamientos y gastronomía en la región del NEA.",

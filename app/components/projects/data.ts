@@ -1,8 +1,8 @@
 import { Project } from '../../types/Project';
-import TAGS from '../tags'; // Cambiar a usar las tags centralizadas
+import TAGS from '../tags';
 
-// Datos de proyectos
-export const PROJECTS: Project[] = [
+// Date of projects
+export const DataProjects: Project[] = [
     {
         id: 'skin',
         title: "Skin",

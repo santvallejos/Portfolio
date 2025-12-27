@@ -1,41 +1,26 @@
 "use client"
 
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { PROJECTS } from "./data";
-import { useProjectFilter } from "./useProjectFilter";
+import { motion, AnimatePresence } from "framer-motion"; // For animations
+import { DataProjects } from "./data";
+import { useProjectFilter } from "./Filter";
 import TechnologySelector from "./TechnologySelector";
-import ProjectCard from "./ProjectCard";
+import ProjectCard from "./Card";
 
 function Projects() {
-    const { selectedTags, filteredProjects, handleTagClick, clearFilters, hasActiveFilters } = useProjectFilter(PROJECTS);
+    const { selectedTags, filteredProjects, handleTagClick, clearFilters, hasActiveFilters } = useProjectFilter(DataProjects);
 
     return (
         <section id="projects" className="py-16 px-4 md:px-8 lg:px-12 bg-white dark:bg-black">
             <div className="max-w-7xl mx-auto">
                 {/* Header Section */}
-                <motion.div 
-                    className="flex items-center gap-3 mb-8"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <div className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-700 dark:text-gray-300">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M11 19h-6a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v4" />
-                            <path d="M20 21l2 -2l-2 -2" />
-                            <path d="M17 17l-2 2l2 2" />
-                        </svg>
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-                        Proyectos Destacables
-                    </h2>
-                </motion.div>
+                <motion.h2 className="text-5xl md:text-4xl font-light text-gray-900 dark:text-white">
+                    Proyectos
+                </motion.h2>
 
                 {/* Filter Section */}
-                <motion.div 
-                    className="mb-12"
+                <motion.div
+                    className="mb-12 pt-5"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.1 }}
@@ -50,7 +35,7 @@ function Projects() {
                 {/* Results Counter */}
                 <AnimatePresence>
                     {hasActiveFilters && (
-                        <motion.div 
+                        <motion.div
                             className="mb-8 text-center"
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: 'auto' }}
@@ -58,7 +43,7 @@ function Projects() {
                             transition={{ duration: 0.3 }}
                         >
                             <p className="text-gray-600 dark:text-gray-400">
-                                Mostrando {filteredProjects.length} de {PROJECTS.length} proyectos
+                                Mostrando {filteredProjects.length} de {DataProjects.length} proyectos
                             </p>
                         </motion.div>
                     )}
@@ -93,10 +78,10 @@ function Projects() {
                             key="no-results"
                         >
                             <div className="max-w-md mx-auto">
-                                <motion.svg 
-                                    className="w-16 h-16 text-gray-400 mx-auto mb-4" 
-                                    fill="none" 
-                                    stroke="currentColor" 
+                                <motion.svg
+                                    className="w-16 h-16 text-gray-400 mx-auto mb-4"
+                                    fill="none"
+                                    stroke="currentColor"
                                     viewBox="0 0 24 24"
                                     initial={{ scale: 0.8, opacity: 0 }}
                                     animate={{ scale: 1, opacity: 1 }}

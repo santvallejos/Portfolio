@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Project } from "../../types/Project";
 import OptimizedImage from "./OptimizedImage";
 import VideoPlayer from "./VideoPlayer";
-import ProjectLinks from "./ProjectLinks";
+import ProjectLinks from "./ButtonLink";
 import TechTag from "../ui/TechTag"; // Importar el componente TechTag
 
 interface ProjectCardProps {
@@ -67,9 +67,10 @@ const ProjectCard = ({ project, index, selectedTags }: ProjectCardProps) => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                 >
+                    {/* Title */}
                     <div>
                         <motion.h3 
-                            className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2"
+                            className="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-2"
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             transition={{ duration: 0.6, delay: 0.3 }}
@@ -78,6 +79,7 @@ const ProjectCard = ({ project, index, selectedTags }: ProjectCardProps) => {
                         </motion.h3>
                     </div>
 
+                    {/* Description */}
                     <motion.p 
                         className="text-gray-600 dark:text-gray-400 leading-relaxed text-base md:text-lg"
                         initial={{ opacity: 0 }}

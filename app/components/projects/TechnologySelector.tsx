@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import TAGS from "../tags"; // Cambiar a usar las tags centralizadas
+import TAGS from "../tags";
 
 interface TechnologySelectorProps {
     selectedTags: string[];
@@ -18,7 +18,7 @@ const TechnologySelector = ({
 }: TechnologySelectorProps) => {
     const [isOpen, setIsOpen] = useState(false);
     
-    // Organizar tecnologías por categorías usando el nuevo sistema
+    // Categorize tags
     const categorizedTags = {
         frontend: Object.values(TAGS).filter(tag => tag.category === 'frontend'),
         backend: Object.values(TAGS).filter(tag => tag.category === 'backend'),
@@ -45,8 +45,8 @@ const TechnologySelector = ({
 
     return (
         <div className="relative">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-                <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-2">
+                <h3 className="text-lg text-gray-700 dark:text-gray-300">
                     Filtrar por tecnología:
                 </h3>
                 {selectedTags.length > 0 && (

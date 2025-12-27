@@ -8,8 +8,9 @@ import Image from "next/image";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 import TAGS from "../tags";
 import TechTag from "../ui/TechTag";
-import { TagConfig } from "../../types/TagConfig";
+import { TimelineItem, Certificate } from "../../types/Trajectory";
 import { CertificateGallery } from "./CertificateGallery";
+
 
 // Componente para manejar el estado de carga de imágenes de certificados
 function CertificateImageWithLoading({ 
@@ -69,24 +70,6 @@ function CertificateImageWithLoading({
         </div>
     );
 }
-
-type TimelineItem = {
-    year: string;
-    title: string;
-    company?: string;
-    institution?: string;
-    description: string;
-    technologies?: (string | TagConfig)[];
-    type: 'work' | 'education';
-    certificateUrl?: string;
-    projectUrl?: string;
-    actionLabel?: string;
-};
-
-type Certificate = {
-    id: string;
-    imageUrl: string;
-};
 
 function Trajectory() {
     const sectionRef = useRef(null);

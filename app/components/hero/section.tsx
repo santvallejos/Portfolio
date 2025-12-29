@@ -7,7 +7,6 @@ import ParticleCanvas from "./ParticleCanvas";
 
 //Magic UI
 import { Dock, DockIcon } from "../magicui/dock";
-import { label } from "framer-motion/client";
 export type IconProps = React.HTMLAttributes<SVGElement>;
 
 const Icons = {

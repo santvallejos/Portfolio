@@ -45,13 +45,25 @@ export const DataProjects: Project[] = [
         }
     },
     {
+        id: 'gestion-de-biblioteca',
+        title: 'Gestión de Biblioteca - Integrador',
+        description: 'Proyecto integrador llevado acabo durante la cursada de la materia "Programación Orientada a Objetos", con el propósito de generar un sistema que ayude a una biblioteca a gestionar sus préstamos de libros para dos tipos de clientes: profesores y alumnos. Una aplicación desktop desarrollada en Java con Java Swing y una base de datos PostgreSQL alojada en la nube.',
+        tags: [TAGS.JAVA, TAGS.POSTGRESQL],
+        links: {
+            github: "https://github.com/santvallejos/Licenciatura-en-Sistemas/releases/tag/1.0.0"
+        },
+        media: {
+            type: 'image',
+            src: "/projects/787_1x_shots_so.jpg"
+        }
+    },
+    {
         id: 'calendar-events',
         title: "Calendar Of Events",
         description: "Permite administrar eventos o recordatorios dentro de un calendario, tiene la función de mostrar, crear, actualizar y eliminar eventos de forma sencilla, además de enviar notificaciones en tiempo real con SignalR.",
         tags: [TAGS.DOTNET, TAGS.CSHARP, TAGS.SQLSERVER, TAGS.DOCKER ,TAGS.ANGULAR, TAGS.BOOTSTRAP],
         links: {
-            githubBackend: "https://github.com/santvallejos/calendar-events-backend",
-            githubFrontend: "https://github.com/santvallejos/calendar-events-frontend",
+            github: "https://github.com/santvallejos/CalendarOfEvents",
             trello: "https://trello.com/b/example/calendar-events",
         },
         media: {
@@ -73,20 +85,4 @@ export const DataProjects: Project[] = [
             src: "/projects/QuickMart.jpg"
         }
     },
-    {
-        id: 'virtualtome',
-        title: "VirtualTome",
-        description: "Este proyecto es una biblioteca virtual donde puedes administrar una lista de libros, estos poseen: nombre, autor, categoría, url de imagen, fecha de publicación y su ISBN. Cumple las funciones básicas de un CRUD que son: listar, añadir, actualizar y eliminar un libro.",
-        tags: [TAGS.NODEJS, TAGS.EXPRESS, TAGS.REACT, TAGS.MYSQL, TAGS.CSS, TAGS.POSTMAN],
-        links: {
-            githubBackend: "https://github.com/santvallejos/virtualtome-backend",
-            githubFrontend: "https://github.com/santvallejos/virtualtome-frontend",
-            web: "https://virtualtome.vercel.app"
-        },
-        media: {
-            type: 'video',
-            src: "https://youtu.be/IVya-3iXTqo?si=msqMEP2NupdhD8Xa",
-            thumbnail: "https://img.youtube.com/vi/IVya-3iXTqo/maxresdefault.jpg"
-        }
-    }
 ];

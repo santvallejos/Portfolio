@@ -46,7 +46,7 @@ const SocialIcons = [
     },
     {
         name: "Download CV",
-        link: "/CV Santiago Maximiliano Vallejos - Software Developer 2025.pdf",
+        link: "/CV Santiago Maximiliano Vallejos - Software Developer 2026.pdf",
         label: "Download CV",
         dowload: true,
         icon: Icons.cv

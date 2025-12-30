@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client"
 
 import { cn } from "@/lib/utils";
@@ -7,88 +6,102 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 
 const reviews = [
     {
+        id: "augusto-1",
+        name: "Augusto Portillo",
+        username: "@augustoportillo",
+        body: "Santiago Vallejos muchas gracias! Fue un placer compartir el escenario con vos y con toda la comunidad .NET NEA! Y gracias a la Universidad de la Cuenca del Plata también por brindarnos el espacio y su cálida recepción. Por más charlas tech! 💪",
+        img: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/profiles-coments/1686101744541(1).jpg",
+    },
+    {
+        id: "juan-1",
+        name: "Juan Rossi",
+        username: "@juanrossi",
+        body: "Está muy bueno Santiago Vallejos! Muy bien logrado ;)",
+        img: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/profiles-coments/1696964749054(1).jpg",
+    },
+    {
         id: "skin-1",
         name: "Skin",
         username: "@skin",
         body: "Muchas gracias por llevar a cabo nuestra página web, Santiago. Quedó excelente y estamos muy contentos con el resultado. ¡Te deseamos mucho éxito en tus futuros proyectos!",
-        img: "/profiles/504081956_17873026191361415_4733661700109419317_n.jpg",
+        img: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/profiles-coments/504081956_17873026191361415_4733661700109419317_n.jpg?updatedAt=1767048372287",
     },
     {
         id: "fernando-1",
         name: "Fernando Luján",
         username: "@fernandolujan",
         body: "Qué bueno ver cómo va tomando forma el proyecto!",
-        img: "/profiles/1516489653690.jpg",
+        img: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/profiles-coments/1516489653690.jpg?updatedAt=1767048371798",
     },
     {
         id: "devlights-1",
         name: "Devlights",
         username: "@devlights",
         body: "Gracias Santiago por ser parte de HackIAthon 🙌 El proyecto y la experiencia que se llevan son un gran logro🚀",
-        img: "/profiles/devlights_logo.jpg",
+        img: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/profiles-coments/devlights_logo.jpg?updatedAt=1767048371976",
     },
     {
         id: "nicolas-1",
         name: "Nicolás Ariel Sena",
         username: "@nicolasarenasena",
         body: "Que buena página, se ve re linda y vuela, tanto en móvil como desktop. Felicidades!",
-        img: "/profiles/1732229843063.jpg",
+        img: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/profiles-coments/1732229843063.jpg?updatedAt=1767048372801",
     },
     {
         id: "fernando-2",
         name: "Fernando Luján",
         username: "@fernandolujan",
         body: "¡Excelente desarrollo Santi! Es un placer observar el progreso que has demostrado hasta ahora. Me complace enormemente ser testigo de tus logros y la dedicación que has invertido. Seguí por este camino que los resultados hablan por sí solos. Tus esfuerzos y dedicación son verdaderamente ejemplares. Seguí adelante con esta misma energía y determinación, el éxito te espera. ¡Muchas felicitaciones por este gran avance!",
-        img: "/profiles/1516489653690.jpg",
+        img: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/profiles-coments/1516489653690.jpg?updatedAt=1767048371798",
     },
     {
         id: "sherpa-1",
         name: "Sherpa.wtf",
         username: "@sherpa.wtf",
         body: "¡Nos emociona que hayas participado en la prueba técnica y que estés orgulloso del resultado que lograste, Santi! 🎉💻\nEstaremos en contacto contigo. ¡Un saludo y a seguir programando! 🚀😊",
-        img: "/profiles/1732818756735.jpg",
+        img: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/profiles-coments/1732818756735.jpg?updatedAt=1767048372114",
     },
     {
         id: "fernando-3",
         name: "Fernando Luján",
         username: "@fernandolujan",
         body: "Qué bueno ver en qué se convirtió un simple ejercicio práctico! Muy bien hecho! Te felicito!!!",
-        img: "/profiles/1516489653690.jpg",
+        img: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/profiles-coments/1516489653690.jpg?updatedAt=1767048371798",
     },
     {
         id: "gabriel-1",
         name: "Gabriel Bergese",
         username: "@gabrielbergese",
         body: "Interesante proyecto! Gracias",
-        img: "/profiles/1730812644444.jpg",
+        img: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/profiles-coments/1730812644444.jpg?updatedAt=1767048372772",
     },
     {
         id: "devlights-2",
         name: "Devlights",
         username: "@devlights",
         body: "Qué bueno verte compartiendo tu experiencia Santiago🎉 Ha sido un placer acompañarte en este proceso y ver cómo tu dedicación y esfuerzo se reflejaron en cada paso del Bootcamp. Estamos seguros de que este es solo el comienzo de un camino lleno de éxitos. 🚀 ¡Felicitaciones!",
-        img: "/profiles/devlights_logo.jpg",
+        img: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/profiles-coments/devlights_logo.jpg?updatedAt=1767048371976",
     },
     {
         id: "fernando-4",
         name: "Fernando Luján",
         username: "@fernandolujan",
         body: "Tuve el privilegio de ser instructor de Santiago en nuestra reciente bootcamp de .NET y me gustaría destacar su excelente desempeño. Desde el inicio, demostró un profundo entendimiento de los conceptos y una gran capacidad para aplicarlos en la práctica. Su dedicación y pasión por el desarrollo fueron evidentes a lo largo del curso. Lo más impresionante fue su trabajo final, donde decidió ir más allá de lo aprendido en clase e implementó SignalR, una tecnología avanzada que no habíamos cubierto. Esta iniciativa no solo muestra su compromiso con el aprendizaje continuo, sino también su habilidad para enfrentar y resolver desafíos por cuenta propia. Estoy seguro de que Santiago tiene un futuro brillante en el mundo del desarrollo de software, y recomiendo encarecidamente a cualquier equipo que esté buscando un desarrollador talentoso e innovador que lo considere. ¡Felicitaciones, Santiago, por tu extraordinario trabajo y tus logros!",
-        img: "/profiles/1516489653690.jpg",
+        img: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/profiles-coments/1516489653690.jpg?updatedAt=1767048371798",
     },
     {
         id: "devlights-3",
         name: "Devlights",
         username: "@devlights",
         body: "¡Felicitaciones, Santiago! 🎉 Tu dedicación y esfuerzo brillaron durante el Bootcamp 3.0, y DevNet es un gran ejemplo de lo que se puede lograr trabajando en equipo. Estamos orgullosos de haber sido parte de tu crecimiento profesional. ¡A seguir alcanzando nuevas metas! 💪💻",
-        img: "/profiles/devlights_logo.jpg",
+        img: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/profiles-coments/devlights_logo.jpg?updatedAt=1767048371976",
     },
     {
         id: "devlights-4",
         name: "Devlights",
         username: "@devlights",
         body: "¡Gracias Santiago por tus palabras! Estamos muy felices y orgullosos de cada uno que forma parte del Bootcamp 3.0❤️🚀",
-        img: "/profiles/devlights_logo.jpg",
+        img: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/profiles-coments/devlights_logo.jpg?updatedAt=1767048371976",
     },
 ];
 
@@ -227,8 +240,8 @@ function Contact() {
 
                         {/* Botón de CV */}
                         <a
-                            href="/CV Santiago Maximiliano Vallejos - Software Developer 2025.pdf"
-                            download="CV Santiago Maximiliano Vallejos - Software Developer 2025.pdf"
+                            href="/CV Santiago Maximiliano Vallejos - Software Developer 2026.pdf"
+                            download="CV Santiago Maximiliano Vallejos - Software Developer 2026.pdf"
                             className="group relative inline-flex items-center justify-center px-8 py-3 text-sm font-medium text-white bg-gray-900 dark:bg-gray-100 dark:text-gray-900 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95"
                         >
                             <span className="mr-2">Descargar CV</span>

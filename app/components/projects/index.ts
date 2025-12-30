@@ -7,7 +7,7 @@ export { default as ProjectCard } from './Card';
 export { useProjectFilter } from './Filter';
 
 // Datos
-export { PROJECTS } from './data';
+export { DataProjects } from './data';
 
 // Tipos (usando los tipos actualizados)
 export type { Project, ProjectFilterHook } from '../../types/Project';

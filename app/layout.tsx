@@ -24,9 +24,9 @@ const greatVibes = Great_Vibes({
 });
 
 export const metadata: Metadata = {
-  title: "Santiago Vallejos - Desarrollador Full Stack | Portfolio",
-  description: "Portfolio de Santiago Vallejos - Desarrollador Full Stack especializado en tecnologías modernas como React, Next.js, Node.js y más. Explora mis proyectos y experiencia.",
-  keywords: ["Santiago Vallejos", "Desarrollador Full Stack", "React", "Next.js", "Node.js", "JavaScript", "TypeScript", "Portfolio", "Desarrollador Web"],
+  title: "Santiago Vallejos - Software Developer | Portfolio",
+  description: "Portfolio de Santiago Vallejos - Software Developer especializado en tecnologías modernas como .NET, Angular, React, Node.js, entre otras. Explora mis proyectos y experiencia.",
+  keywords: ["Santiago Vallejos", "Software Developer", ".NET", "Angular", "React", "Node.js", "JavaScript", "TypeScript", "Portfolio", "Web developer", "Full Stack Developer"],
   authors: [{ name: "Santiago Vallejos" }],
   creator: "Santiago Vallejos",
   publisher: "Santiago Vallejos",
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "Santiago Vallejos - Desarrollador Full Stack",
-    description: "Portfolio de Santiago Vallejos - Desarrollador Full Stack especializado en tecnologías modernas. Explora mis proyectos y experiencia.",
+    title: "Santiago Vallejos - Software Developer",
+    description: "Portfolio de Santiago Vallejos - Software Developer especializado en tecnologías modernas. Explora mis proyectos y experiencia.",
     url: 'https://santvallejos.dev',
     siteName: 'Santiago Vallejos Portfolio',
     images: [
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
         url: '/about me/6.jpg',
         width: 1200,
         height: 630,
-        alt: 'Santiago Vallejos - Desarrollador Full Stack',
+        alt: 'Santiago Vallejos - Software Developer',
       },
     ],
     locale: 'es_ES',

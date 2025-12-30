@@ -22,6 +22,8 @@ import tailwind from "../icons/tailwind.svg"
 import typescript from "../icons/typescript.svg"
 import php from "../icons/vscode-icons--file-type-php2.svg"
 import vue from "../icons/vue.svg"
+import postgresql from "../icons/postgresql.svg"
+import java from "../icons/java.svg"
 
 // Importar el tipo desde el archivo de tipos
 import { TagConfig } from "../types/TagConfig"
@@ -58,7 +60,7 @@ const TAGS: Record<string, TagConfig> = {
     name: "Next.js",
     icon: nextjs,
     color: "#000000",
-    class: "bg-black/10 text-white border-zinc-600",
+    class: "bg-black/10 dark:text-white border-zinc-600",
     description: "Framework de React para producción",
     category: "framework"
   },
@@ -138,6 +140,14 @@ const TAGS: Record<string, TagConfig> = {
     description: "Lenguaje de scripting del lado del servidor",
     category: "language"
   },
+    JAVA: {
+    name: "Java",
+    icon: java,
+    color: "#007396",
+    class: "bg-black/10 dark:bg-white/10 dark:text-white border-black/20 dark:border-white/20",
+    description: "Lenguaje de programación orientado a objetos",
+    category: "language"
+  },
 
   // Estilos & CSS
   CSS: {
@@ -190,12 +200,12 @@ const TAGS: Record<string, TagConfig> = {
     description: "Base de datos NoSQL orientada a documentos",
     category: "database"
   },
-  SUPABASE: {
-    name: "Supabase",
-    icon: supabase,
-    color: "#3ECF8E",
-    class: "bg-[#3ECF8E]/10 text-[#3ECF8E] border-[#3ECF8E]/20",
-    description: "Plataforma de backend como servicio",
+  POSTGRESQL: {
+    name: "PostgreSQL",
+    icon: postgresql,
+    color: "#336791",
+    class: "bg-[#336791]/10 text-[#336791] border-[#336791]/20",
+    description: "Sistema de gestión de base de datos relacional avanzado",
     category: "database"
   },
 
@@ -215,6 +225,14 @@ const TAGS: Record<string, TagConfig> = {
     class: "bg-[#FF6C37]/10 text-[#FF6C37] border-[#FF6C37]/20",
     description: "Herramienta para testing de APIs",
     category: "tools"
+  },
+    SUPABASE: {
+    name: "Supabase",
+    icon: supabase,
+    color: "#3ECF8E",
+    class: "bg-[#3ECF8E]/10 text-[#3ECF8E] border-[#3ECF8E]/20",
+    description: "Plataforma de backend como servicio",
+    category: "database"
   },
 
   // AI & Machine Learning

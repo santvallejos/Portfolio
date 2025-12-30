@@ -2,18 +2,18 @@ import { BlurFade } from "../magicui/blur-fade";
 
 // Media assets for the About Me section
 const media = [
-    { type: "image", url: "/aboutme/1.jpg" },
-    { type: "image", url: "/aboutme/2.jpg" },
-    { type: "image", url: "/aboutme/3.jpg" },
-    { type: "image", url: "/aboutme/5.jpg" },
-    { type: "image", url: "/aboutme/12.jpg" },
-    { type: "image", url: "/aboutme/6.jpg" },
-    { type: "image", url: "/aboutme/7.jpg" },
-    { type: "image", url: "/aboutme/8.jpg" },
+    { type: "image", url: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/1.jpg?updatedAt=1767047827951" },
+    { type: "image", url: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/2.jpg?updatedAt=1767047826081" },
+    { type: "image", url: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/3.jpg?updatedAt=1767047830118" },
+    { type: "image", url: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/5.jpg?updatedAt=1767047875982" },
+    { type: "image", url: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/12.jpg?updatedAt=1767047826575" },
+    { type: "image", url: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/6.jpg?updatedAt=1767047870217" },
+    { type: "image", url: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/7.jpg?updatedAt=1767047873497" },
+    { type: "image", url: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/8.jpg?updatedAt=1767047878819" },
     { type: "image", url: "/aboutme/11.jpg" },
     { type: "video", url: "/aboutme/4.mp4" },
-    { type: "image", url: "/aboutme/9.jpg" },
-    { type: "image", url: "/aboutme/10.jpg" },
+    { type: "image", url: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/9.jpg?updatedAt=1767047880167" },
+    { type: "image", url: "https://ik.imagekit.io/o9yqquihf/Portfolio-Profile/10.jpg?updatedAt=1767047879859" },
 ];
 
 export default function AboutMe() {

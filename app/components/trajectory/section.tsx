@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { useInView } from "framer-motion";
-import { ExternalLink, Award, GraduationCap, Briefcase } from "lucide-react";
+import { ExternalLink, Award, GraduationCap, Briefcase, Calendar, MapPin } from "lucide-react";
 import Image from "next/image";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 import TAGS from "../tags";
@@ -71,6 +71,8 @@ function CertificateImageWithLoading({
     );
 }
 
+
+
 function Trajectory() {
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
@@ -98,8 +100,8 @@ function Trajectory() {
             year: "2024",
             title: "Full Stack Developer",
             institution: "Bootcamp 3.0 By Devlights",
-            description: "Programa de formación para Full Stack developers, con especialización .NET (C#), SQL Server y Angular",
-            technologies: [TAGS.DOTNET, TAGS.CSHARP, TAGS.SQLSERVER, TAGS.ANGULAR],
+            description: "Programa de formación para Full Stack developers, con especialización .NET (C#), SQL Server, MongoDB y Angular",
+            technologies: [TAGS.DOTNET, TAGS.CSHARP, TAGS.SQLSERVER, TAGS.MONGODB, TAGS.ANGULAR],
             type: 'education',
             certificateUrl: "/certification/CertificadoDevlights.jpg",
             actionLabel: "Ver Certificado"
@@ -130,6 +132,14 @@ function Trajectory() {
             type: 'work',
             projectUrl: "https://insidedarkstudio.com",
             actionLabel: "Ver Empresa"
+        },
+        {
+            year: "2025",
+            title: "Full Stack Developer",
+            institution: "Bootcamp 4.0 By Devlights",
+            description: "Programa de formación para Full Stack developers, con especialización .NET (C#), SQL Server, MongoDB y React",
+            technologies: [TAGS.DOTNET, TAGS.CSHARP, TAGS.SQLSERVER, TAGS.MONGODB, TAGS.REACT],
+            type: 'education',
         }
     ];
 
@@ -218,111 +228,189 @@ function Trajectory() {
                 <div ref={sectionRef}>
                     {activeTab === 'trajectory' ? (
                         <motion.div
-                            className="space-y-20 md:space-y-32"
+                            className="relative"
                             key="trajectory"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
                             transition={{ duration: 0.5 }}
                         >
-                            {timelineItems.map((item, index) => (
-                                <motion.div
-                                    key={index}
-                                    className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start border-b border-gray-400 dark:border-gray-600 pb-3"
-                                    initial={{ opacity: 0, y: 40 }}
-                                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-                                    transition={{ duration: 0.8, delay: index * 0.2 }}
-                                >
-                                    {/* Year - Left column on desktop, top on mobile */}
-                                    <div className="md:col-span-2">
-                                        <span className="text-3xl md:text-4xl font-light text-zinc-400 dark:text-zinc-600">
-                                            {item.year}
-                                        </span>
-                                    </div>
+                            {/* Timeline items */}
+                            <div className="space-y-0">
+                                {timelineItems.map((item, index) => (
+                                    <motion.div
+                                        key={index}
+                                        className="relative group"
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                                        transition={{ duration: 0.6, delay: index * 0.15 }}
+                                    >
+                                        <div className="flex gap-6 md:gap-10">
 
-                                    {/* Content - Right column on desktop, bottom on mobile */}
-                                    <div className="md:col-span-10 space-y-4">
-                                        <div className="lg:flex lg:items-start lg:justify-between">
-                                            <div className="flex-1">
-                                                <div className="flex items-center gap-3 mb-2">
-                                                    <h3 className="text-2xl md:text-3xl font-light">
-                                                        {item.title}
-                                                    </h3>
-                                                    {/* Identificador visual del tipo */}
-                                                    <div className="flex items-center gap-1">
-                                                        {item.type === 'education' ? (
-                                                            <div className="flex items-center gap-1 bg-blue-500/20 text-blue-400 px-2 py-1 rounded-full text-xs">
-                                                                <GraduationCap size={12} />
-                                                                <span>Educación</span>
+                                            {/* Card container */}
+                                            <motion.div 
+                                                className={`
+                                                    flex-1 relative p-6 md:p-8 rounded-2xl mb-6
+                                                    bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 
+                                                    dark:from-zinc-100/80 dark:to-zinc-100/40
+                                                    border border-zinc-800/50 dark:border-zinc-200/50
+                                                    hover:border-zinc-700 dark:hover:border-zinc-300
+                                                    transition-all duration-500 ease-out
+                                                    hover:shadow-lg hover:shadow-zinc-900/20 dark:hover:shadow-zinc-100/20
+                                                    group-hover:translate-x-1
+                                                `}
+                                                whileHover={{ scale: 1.01 }}
+                                                transition={{ duration: 0.2 }}
+                                            >
+                                                {/* Gradient accent line */}
+                                                <div className={`
+                                                    absolute left-0 top-6 bottom-6 w-1 rounded-full
+                                                    ${item.type === 'education' 
+                                                        ? 'bg-gradient-to-b from-blue-500 via-blue-400 to-transparent' 
+                                                        : 'bg-gradient-to-b from-emerald-500 via-emerald-400 to-transparent'
+                                                    }
+                                                `} />
+
+                                                {/* Header section */}
+                                                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-5">
+                                                    <div className="flex-1 pl-4">
+                                                        {/* Year badge with icon */}
+                                                        <div className="flex items-center gap-2 mb-3">
+                                                            <div className={`
+                                                                flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium
+                                                                ${item.type === 'education' 
+                                                                    ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20' 
+                                                                    : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                                                                }
+                                                            `}>
+                                                                <Calendar size={12} />
+                                                                <span>{item.year}</span>
                                                             </div>
-                                                        ) : (
-                                                            <div className="flex items-center gap-1 bg-green-500/20 text-green-400 px-2 py-1 rounded-full text-xs">
-                                                                <Briefcase size={12} />
-                                                                <span>Trabajo</span>
+                                                            
+                                                            {/* Type badge */}
+                                                            <div className={`
+                                                                flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium
+                                                                ${item.type === 'education' 
+                                                                    ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20' 
+                                                                    : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                                                                }
+                                                            `}>
+                                                                {item.type === 'education' ? (
+                                                                    <>
+                                                                        <GraduationCap size={12} />
+                                                                        <span>Educación</span>
+                                                                    </>
+                                                                ) : (
+                                                                    <>
+                                                                        <Briefcase size={12} />
+                                                                        <span>Experiencia</span>
+                                                                    </>
+                                                                )}
                                                             </div>
-                                                        )}
+                                                        </div>
+
+                                                        {/* Title */}
+                                                        <h3 className="text-xl md:text-2xl font-semibold text-white dark:text-black mb-2 tracking-tight">
+                                                            {item.title}
+                                                        </h3>
+                                                        
+                                                        {/* Company/Institution with icon */}
+                                                        <div className="flex items-center gap-2 text-zinc-400 dark:text-zinc-600">
+                                                            <MapPin size={14} className="flex-shrink-0" />
+                                                            <span className="text-base font-medium">
+                                                                {item.company || item.institution}
+                                                            </span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <p className="text-lg text-zinc-400 dark:text-zinc-600 mb-4">
-                                                    {item.company || item.institution}
-                                                </p>
-                                            </div>
 
-                                            {/* Botón de acción */}
-                                            {(item.certificateUrl || item.projectUrl) && (
-                                                <>
-                                                    {item.certificateUrl ? (
-                                                        <Dialog>
-                                                            <DialogTrigger asChild>
-                                                                <button className="flex items-center gap-2 bg-zinc-800/50 hover:bg-zinc-700/50 dark:bg-zinc-200/50 dark:hover:bg-zinc-300/50 border border-zinc-700 hover:border-zinc-600 dark:border-zinc-300 dark:hover:border-zinc-400 text-zinc-300 hover:text-white dark:text-zinc-700 dark:hover:text-black px-4 py-2 rounded-lg transition-all duration-200 text-sm">
-                                                                    <Award size={16} />
+                                                    {/* Action button */}
+                                                    {(item.certificateUrl || item.projectUrl) && (
+                                                        <div className="pl-4 lg:pl-0">
+                                                            {item.certificateUrl ? (
+                                                                <Dialog>
+                                                                    <DialogTrigger asChild>
+                                                                        <motion.button 
+                                                                            className={`
+                                                                                flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium
+                                                                                transition-all duration-300 cursor-pointer
+                                                                                ${item.type === 'education'
+                                                                                    ? 'bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 border border-blue-500/30 hover:border-blue-500/50'
+                                                                                    : 'bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 hover:border-emerald-500/50'
+                                                                                }
+                                                                            `}
+                                                                            whileHover={{ scale: 1.02 }}
+                                                                            whileTap={{ scale: 0.98 }}
+                                                                        >
+                                                                            <Award size={16} />
+                                                                            <span>{item.actionLabel}</span>
+                                                                        </motion.button>
+                                                                    </DialogTrigger>
+                                                                    <DialogContent className="max-w-4xl w-full lg:w-auto bg-zinc-900 dark:bg-zinc-100 border-zinc-700 dark:border-zinc-300">
+                                                                        <DialogHeader>
+                                                                            <DialogTitle className="text-white dark:text-black">Certificado</DialogTitle>
+                                                                        </DialogHeader>
+                                                                        <div className="flex justify-center py-6">
+                                                                            <CertificateImageWithLoading
+                                                                                src={item.certificateUrl}
+                                                                                alt="Certificado"
+                                                                                className="max-w-full max-h-[70vh] object-contain rounded-lg"
+                                                                            />
+                                                                        </div>
+                                                                    </DialogContent>
+                                                                </Dialog>
+                                                            ) : (
+                                                                <motion.button
+                                                                    onClick={() => handleAction(item)}
+                                                                    className={`
+                                                                        flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium
+                                                                        transition-all duration-300 cursor-pointer
+                                                                        ${item.type === 'education'
+                                                                            ? 'bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 border border-blue-500/30 hover:border-blue-500/50'
+                                                                            : 'bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 hover:border-emerald-500/50'
+                                                                        }
+                                                                    `}
+                                                                    whileHover={{ scale: 1.02 }}
+                                                                    whileTap={{ scale: 0.98 }}
+                                                                >
+                                                                    <ExternalLink size={16} />
                                                                     <span>{item.actionLabel}</span>
-                                                                </button>
-                                                            </DialogTrigger>
-                                                            <DialogContent className="max-w-4xl w-full lg:w-auto bg-zinc-900 dark:bg-zinc-100 border-zinc-700 dark:border-zinc-300">
-                                                                <DialogHeader>
-                                                                    <DialogTitle className="text-white dark:text-black">Certificado</DialogTitle>
-                                                                </DialogHeader>
-                                                                <div className="flex justify-center py-6">
-                                                                    <CertificateImageWithLoading
-                                                                        src={item.certificateUrl}
-                                                                        alt="Certificado"
-                                                                        className="max-w-full max-h-[70vh] object-contain rounded-lg"
-                                                                    />
-                                                                </div>
-                                                            </DialogContent>
-                                                        </Dialog>
-                                                    ) : (
-                                                        <button
-                                                            onClick={() => handleAction(item)}
-                                                            className="flex items-center gap-2 bg-zinc-800/50 hover:bg-zinc-700/50 dark:bg-zinc-200/50 dark:hover:bg-zinc-300/50 border border-zinc-700 hover:border-zinc-600 dark:border-zinc-300 dark:hover:border-zinc-400 text-zinc-300 hover:text-white dark:text-zinc-700 dark:hover:text-black px-4 py-2 rounded-lg transition-all duration-200 text-sm"
-                                                        >
-                                                            <ExternalLink size={16} />
-                                                            <span>{item.actionLabel}</span>
-                                                        </button>
+                                                                </motion.button>
+                                                            )}
+                                                        </div>
                                                     )}
-                                                </>
-                                            )}
-                                        </div>
+                                                </div>
 
-                                        <p className="text-lg text-zinc-300 dark:text-zinc-700 leading-relaxed max-w-2xl">
-                                            {item.description}
-                                        </p>
+                                                {/* Description */}
+                                                <p className="text-base text-zinc-400 dark:text-zinc-600 leading-relaxed pl-4 mb-5 max-w-3xl">
+                                                    {item.description}
+                                                </p>
 
-                                        {/* Technologies - Right aligned on desktop */}
-                                        <div className="flex flex-wrap gap-3 justify-start md:justify-end mt-6">
-                                            {item.technologies?.map((tech, techIndex) => (
-                                                <TechTag
-                                                    key={techIndex}
-                                                    tag={tech}
-                                                    size="sm"
-                                                    variant="default"
-                                                />
-                                            ))}
+                                                {/* Technologies */}
+                                                {item.technologies && item.technologies.length > 0 && (
+                                                    <div className="pl-4 pt-4 border-t border-zinc-800/50 dark:border-zinc-200/50">
+                                                        <div className="flex flex-wrap gap-2">
+                                                            {item.technologies.map((tech, techIndex) => (
+                                                                <motion.div
+                                                                    key={techIndex}
+                                                                    initial={{ opacity: 0, scale: 0.8 }}
+                                                                    animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                                                                    transition={{ duration: 0.3, delay: index * 0.1 + techIndex * 0.05 }}
+                                                                >
+                                                                    <TechTag
+                                                                        tag={tech}
+                                                                        size="sm"
+                                                                        variant="default"
+                                                                    />
+                                                                </motion.div>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                )}
+                                            </motion.div>
                                         </div>
-                                    </div>
-                                </motion.div>
-                            ))}
+                                    </motion.div>
+                                ))}
+                            </div>
                         </motion.div>
                     ) : (
                         /* Certificate Gallery */

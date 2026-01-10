@@ -36,7 +36,7 @@ const TechnologySelector = ({
         framework: 'Frameworks',
         tools: 'Herramientas',
         language: 'Lenguajes',
-        ai: 'IA & ML',
+        ai: 'IA',
     };
 
     const handleClickOutside = () => {

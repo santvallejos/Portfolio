@@ -12,6 +12,7 @@ import mongodb from "../icons/mongodb.svg"
 import mysql from "../icons/mysql.svg"
 import nextjs from "../icons/nextjs.svg"
 import nodejs from "../icons/nodejs.svg"
+import express from "../icons/express.svg"
 import postman from "../icons/postman.svg"
 import react from "../icons/react.svg"
 import langchain from "../icons/simple-icons--langchain.svg"
@@ -76,7 +77,7 @@ const TAGS: Record<string, TagConfig> = {
   },
   EXPRESS: {
     name: "Express",
-    icon: nodejs, // Usamos el mismo icono de Node.js por ahora
+    icon: express, // Usamos el mismo icono de Node.js por ahora
     color: "#000000",
     class: "bg-black/10 text-black border-black/20 dark:bg-white/10 dark:text-white dark:border-white/20",
     description: "Framework web minimalista para Node.js",

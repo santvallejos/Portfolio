@@ -54,7 +54,7 @@ export const timelineItems: TimelineItem[] = [
         type: "education",
     },
     {
-        year: "2025 - Presente",
+        year: "2025",
         title: "Web developer",
         company: "Skin",
         description:
@@ -65,7 +65,7 @@ export const timelineItems: TimelineItem[] = [
         actionLabel: "Ver sitio web",
     },
     {
-        year: "2025 - Presente",
+        year: "2025",
         title: "Frontend Developer",
         company: "Inside Dark Studio",
         description:

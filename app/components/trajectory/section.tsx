@@ -4,167 +4,17 @@ import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { useInView } from "framer-motion";
 import { ExternalLink, Award, GraduationCap, Briefcase, Calendar, MapPin } from "lucide-react";
-import Image from "next/image";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
-import TAGS from "../tags";
+import { timelineItems, certificates } from "./data";
+import { TimelineItem } from "../../types/Trajectory";
 import TechTag from "../ui/TechTag";
-import { TimelineItem, Certificate } from "../../types/Trajectory";
 import { CertificateGallery } from "./CertificateGallery";
-
-
-// Componente para manejar el estado de carga de imágenes de certificados
-function CertificateImageWithLoading({ 
-    src, 
-    alt, 
-    className 
-}: { 
-    src: string; 
-    alt: string; 
-    className?: string; 
-}) {
-    const [isLoading, setIsLoading] = useState(true);
-    const [hasError, setHasError] = useState(false);
-
-    const handleLoad = () => {
-        setIsLoading(false);
-        setHasError(false);
-    };
-
-    const handleError = () => {
-        setIsLoading(false);
-        setHasError(true);
-    };
-
-    return (
-        <div className="relative">
-            {/* Skeleton loader */}
-            {isLoading && (
-                <div className="absolute inset-0 bg-gradient-to-r from-zinc-800/50 to-zinc-700/50 dark:from-zinc-200/50 dark:to-zinc-300/50 animate-pulse rounded-lg flex items-center justify-center min-h-[400px]">
-                    <div className="w-8 h-8 border-2 border-zinc-400 dark:border-zinc-600 border-t-transparent rounded-full animate-spin"></div>
-                </div>
-            )}
-
-            {/* Error state */}
-            {hasError && (
-                <div className="absolute inset-0 bg-zinc-800/50 dark:bg-zinc-200/50 flex items-center justify-center rounded-lg min-h-[400px]">
-                    <div className="text-center text-zinc-400 dark:text-zinc-600">
-                        <svg className="w-12 h-12 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z" />
-                        </svg>
-                        <p className="text-sm">Error al cargar el certificado</p>
-                    </div>
-                </div>
-            )}
-
-            {/* Imagen */}
-            <Image
-                src={src}
-                alt={alt}
-                width={800}
-                height={600}
-                className={`${className} ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
-                onLoad={handleLoad}
-                onError={handleError}
-                priority
-            />
-        </div>
-    );
-}
-
-
+import { CertificateImageWithLoading } from "./CertificateImageWithLoading";
 
 function Trajectory() {
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
     const [activeTab, setActiveTab] = useState<'trajectory' | 'certificates'>('trajectory');
-
-    const timelineItems: TimelineItem[] = [
-        {
-            year: "2022 - Presente",
-            title: "Licenciatura en Sistemas de la Información",
-            company: "Universidad Nacional del Nordeste",
-            description: "Carrera de grado en sistemas de información",
-            type: 'education',
-        },
-        {
-            year: "2023-2024",
-            title: "Full Stack Developer",
-            institution: "Talentos Digitales",
-            description: "Programa de formación para Full Stack developers, con especialización en PHP (Laravel), MySQL y Vue.JS",
-            technologies: [TAGS.PHP, TAGS.LARAVEL, TAGS.CODEIGNITER, TAGS.BOOTSTRAP, TAGS.MYSQL, TAGS.VUE, TAGS.NODEJS, TAGS.JAVASCRIPT],
-            type: 'education',
-            certificateUrl: "/certification/CertificadoTalentosDigitales.jpg",
-            actionLabel: "Ver Certificado"
-        },
-        {
-            year: "2024",
-            title: "Full Stack Developer",
-            institution: "Bootcamp 3.0 By Devlights",
-            description: "Programa de formación para Full Stack developers, con especialización .NET (C#), SQL Server, MongoDB y Angular",
-            technologies: [TAGS.DOTNET, TAGS.CSHARP, TAGS.SQLSERVER, TAGS.MONGODB, TAGS.ANGULAR],
-            type: 'education',
-            certificateUrl: "/certification/CertificadoDevlights.jpg",
-            actionLabel: "Ver Certificado"
-        },
-        {
-            year: "2025 - Presente",
-            title: "Inglés Británico",
-            institution: "Universidad Nacional del Nordeste",
-            description: "Curso de inglés británico desde A1 hasta B2",
-            type: 'education',
-        },
-        {
-            year: "2025 - Presente",
-            title: "Web developer",
-            company: "Skin",
-            description: "Desarrollo de sitio web de manera freelance para Skin, e-commerce de accersorios para dispositivos móviles.",
-            technologies: [TAGS.REACT, TAGS.TYPESCRIPT, TAGS.TAILWIND, TAGS.SUPABASE],
-            type: 'work',
-            projectUrl: "https://skincts.vercel.app/",
-            actionLabel: "Ver sitio web"
-        },
-        {
-            year: "2025 - Presente",
-            title: "Frontend Developer",
-            company: "Inside Dark Studio",
-            description: "Pasante como desarrollador frontend, colaborando en proyectos de desarrollo web y aplicaciones utilizando tecnologías modernas.",
-            technologies: [TAGS.REACT, TAGS.TYPESCRIPT, TAGS.TAILWIND],
-            type: 'work',
-            projectUrl: "https://insidedarkstudio.com",
-            actionLabel: "Ver Empresa"
-        },
-        {
-            year: "2025",
-            title: "Full Stack Developer",
-            institution: "Bootcamp 4.0 By Devlights",
-            description: "Programa de formación para Full Stack developers, con especialización .NET (C#), SQL Server, MongoDB y React",
-            technologies: [TAGS.DOTNET, TAGS.CSHARP, TAGS.SQLSERVER, TAGS.MONGODB, TAGS.REACT],
-            type: 'education',
-        }
-    ];
-
-    const certificates: Certificate[] = [
-        {
-            id: "talentos-digitales",
-            imageUrl: "/certification/CertificadoTalentosDigitales.jpg"
-        },
-        {
-            id: "devlights",
-            imageUrl: "/certification/CertificadoDevlights.jpg"
-        },
-        {
-            id: "coder-house",
-            imageUrl: "/certification/CertificadoCoderHouse.jpg"
-        },
-        {
-            id: "datacamp-docker",
-            imageUrl: "/certification/CertificadoDataCampDocker.jpg"
-        },
-        {
-            id: "datacamp-aws",
-            imageUrl: "/certification/CertificadoDataCampAWS.jpg"
-        }
-    ];
 
     const handleAction = (item: TimelineItem) => {
         if (item.projectUrl) {

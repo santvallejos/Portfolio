@@ -60,7 +60,7 @@ const TAGS: Record<string, TagConfig> = {
     name: "Next.js",
     icon: nextjs,
     color: "#000000",
-    class: "bg-black/10 dark:text-white border-zinc-600",
+    class: "bg-black/30 dark:text-white border-zinc-600",
     description: "Framework de React para producción",
     category: "framework"
   },
